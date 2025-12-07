@@ -10,10 +10,40 @@
 
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <link rel="stylesheet" href="/assets/css/blog.css" />
+  <style>
+    /* readability + mobile fixes */
+    .page-hero-content h1 {
+      font-size: 2.4rem;
+      line-height: 1.2;
+    }
+    .page-hero-content p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+    .cta-buttons a {
+      text-align: center;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      display: block;
+    }
+    .button.primary {
+      background: #f4c152;
+      color: #000;
+    }
+    .button.secondary {
+      background: #2c2c2c;
+      color: #fff;
+    }
+    section {
+      line-height: 1.65;
+    }
+  </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="site-header">
   <div class="nav-container">
     <a class="logo" href="/">THE HUMAN EQUATION</a>
@@ -29,14 +59,15 @@
   </div>
 </header>
 
+<!-- HERO -->
 <section class="page-hero large" style="background: url('/assets/img/home-hero.jpg') center/cover no-repeat;">
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
-    <h1>Your Life Has a Pattern<br>You’re Not Meant to Solve It Alone.</h1>
-    <p>Identity. Community. Healing. Rebuilding who you are through structured support.</p>
-    
-    <!-- Primary CTA Buttons -->
-    <div class="cta-buttons" style="margin-top: 2rem;">
+    <h1>You Don’t Have to Figure Everything Out Alone.</h1>
+    <p>A therapist-led community for identity, parenting, and emotional clarity.</p>
+
+    <!-- CTA BUTTONS -->
+    <div class="cta-buttons" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; max-width: 260px;">
       <a class="button primary" href="https://square.link/u/Rd2drU9k">Join Community — $49/mo</a>
       <a class="button secondary" href="https://square.link/u/cIAWqb2K">Standard — $129/mo</a>
       <a class="button secondary" href="https://square.link/u/Egvn6oVb">Premium — $199/mo</a>
@@ -44,20 +75,29 @@
   </div>
 </section>
 
+<!-- WELCOME SECTION -->
 <section style="max-width: 850px; margin: 3rem auto; padding: 0 1.5rem;">
   <h2>Welcome to The Human Equation</h2>
+
+  <p><strong>Most people come here because something in their life has become too heavy to carry alone.</strong></p>
+
   <p>
-    When identity feels fractured, when parenting stretches you thin, when relationships become confusing, 
-    or when you’re carrying more than you can hold alone — you need more than advice. You need structure, 
-    community, and a therapist-led space to learn who you are becoming next.
+    Maybe it’s parenting. Maybe it’s divorce. Maybe it’s identity, work, or your relationships. Maybe it’s the quiet 
+    sense that you’ve lost track of who you are while trying to hold everything together.
   </p>
+
   <p>
-    The Human Equation is a growth community built for people rebuilding their lives: single parents, 
-    overwhelmed adults, men discovering their identity, women carrying invisible emotional loads, 
-    neurodivergent thinkers, and anyone who wants to live a grounded, honest, values-aligned life.
+    The Human Equation is a place to slow down, make sense of your story, and rebuild yourself with support — 
+    not judgment. Inside this community, you’ll find weekly groups, identity tools, and therapist-led guidance 
+    that helps you grow in a steady, grounded, human way.
+  </p>
+
+  <p>
+    If you’re overwhelmed, exhausted, or unsure of your next step… you’re in the right place.
   </p>
 </section>
 
+<!-- WHAT WE DO -->
 <section style="background: #f8fafc; padding: 3rem 1.5rem; margin: 3rem 0;">
   <div style="max-width: 850px; margin: auto;">
     <h2>What We Do</h2>
@@ -75,6 +115,7 @@
   </div>
 </section>
 
+<!-- OUR STORY -->
 <section style="max-width: 850px; margin: 3rem auto; padding: 0 1.5rem;">
   <h2>Our Story</h2>
   <p>
@@ -90,6 +131,7 @@
   </p>
 </section>
 
+<!-- GROUPS SECTION -->
 <section style="background: #ffffff; padding: 3rem 1.5rem;">
   <div style="max-width: 850px; margin: auto;">
     <h2>Weekly Groups</h2>
@@ -103,6 +145,7 @@
   </div>
 </section>
 
+<!-- JOIN SECTION -->
 <section style="background: #f8fafc; padding: 3rem 1.5rem;">
   <div style="max-width: 850px; margin: auto;">
     <h2>A Simple, No-Friction Path</h2>
@@ -115,17 +158,19 @@
   </div>
 </section>
 
+<!-- FINAL CTA -->
 <section class="cta-section" style="text-align: center; padding: 3rem 1.5rem;">
   <h2>Start Where You Are.<br>We’ll Grow From There.</h2>
   <p>Healing doesn’t require perfection — only presence. Choose your membership below.</p>
 
-  <div class="cta-buttons" style="margin-top: 2rem;">
+  <div class="cta-buttons" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; max-width: 260px; margin-left: auto; margin-right: auto;">
     <a class="button primary" href="https://square.link/u/Rd2drU9k">Join Community — $49/mo</a>
     <a class="button secondary" href="https://square.link/u/cIAWqb2K">Standard — $129/mo</a>
     <a class="button secondary" href="https://square.link/u/Egvn6oVb">Premium — $199/mo</a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-grid">
     <div><h4>The Human Equation</h4></div>
