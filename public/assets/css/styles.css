@@ -198,3 +198,35 @@ ul, ol {
 section * {
   opacity: 1 !important;
 }
+/* ------------------------------
+   HERO FIX FOR MOBILE READABILITY
+   ------------------------------ */
+
+/* Reduce hero height on mobile to prevent overlap */
+@media (max-width: 768px) {
+  .page-hero.large {
+    min-height: 60vh !important; /* shorter hero */
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  .page-hero-overlay {
+    background: rgba(0,0,0,0.55) !important; /* lighter overlay */
+  }
+
+  .page-hero-content h1,
+  .page-hero-content p,
+  .cta-buttons a {
+    position: relative;
+    z-index: 2;
+    color: #ffffff !important; /* ensure readable white text */
+  }
+}
+
+/* Ensure next section is fully opaque and visible */
+.page-hero + section {
+  background: #ffffff !important;
+  color: #111 !important;
+  z-index: 10;
+  position: relative;
+}
