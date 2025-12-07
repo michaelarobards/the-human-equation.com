@@ -292,3 +292,87 @@ section * {
 section *, article *, div *, p *, li * {
   opacity: 1 !important;
 }
+/* =========================================================================
+   THE HUMAN EQUATION – MICHAEL HERO MODULE (ISOLATED & BRAND-CONSISTENT)
+   ========================================================================= */
+
+/* Prevent global overrides from breaking hero */
+.he-hero,
+.he-hero * {
+  background: none !important;
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* HERO WRAPPER */
+.he-hero {
+  position: relative;
+  width: 100%;
+  height: 82vh;
+  min-height: 520px;
+  background: url('/assets/images/michael-hero.jpg') center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 5vw;
+  color: #fff;
+}
+
+/* OVERLAY */
+.he-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.55) 25%,
+    rgba(0,0,0,0.30) 55%,
+    rgba(0,0,0,0.10) 100%
+  );
+  z-index: 1;
+}
+
+/* TEXT CONTENT */
+.he-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  animation: fadeUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+.he-hero-content h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #fff !important;
+}
+
+.he-hero-content p {
+  font-size: 1.45rem;
+  color: #e8e8e8 !important;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .he-hero {
+    justify-content: center;
+    text-align: center;
+    background-position: center top;
+    height: 70vh;
+  }
+  .he-hero-overlay {
+    background: rgba(0,0,0,0.6) !important;
+  }
+  .he-hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .he-hero-content p {
+    font-size: 1.15rem;
+  }
+}
