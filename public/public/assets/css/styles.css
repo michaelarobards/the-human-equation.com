@@ -1,0 +1,103 @@
+/* Base site styling for The Human Equation */
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0f1419;
+  color: #e7e9ea;
+}
+
+/* Header and Navigation */
+.site-header {
+  background: rgba(10, 12, 14, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 1rem 0;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #f4bf4f;
+  text-decoration: none;
+}
+.main-nav a {
+  margin-left: 1.4rem;
+  font-size: 0.95rem;
+  color: #e7e9ea;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.main-nav a:hover {
+  opacity: 0.8;
+}
+.main-nav .active {
+  color: #f4bf4f;
+}
+.main-nav .cta {
+  padding: 6px 12px;
+  background: #f4bf4f;
+  color: #0f1419;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Hero sections generic styling */
+.hero {
+  position: relative;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.45));
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* Default button styles */
+.btn-primary,
+.btn-outline {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-primary {
+  background: #f4bf4f;
+  color: #0f1419;
+}
+.btn-outline {
+  border: 1px solid #f4bf4f;
+  color: #f4bf4f;
+}
+
+/* General containers */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
