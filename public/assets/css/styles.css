@@ -101,3 +101,73 @@ html, body {
   max-width: 1100px;
   margin: auto;
 }
+/* ---------------------------------------
+   GLOBAL READABILITY + CONTRAST FIX
+   --------------------------------------- */
+
+/* Ensure all text uses clear, high-contrast defaults */
+body, p, li, span, a {
+  color: #111 !important;      /* near-black for readability */
+  line-height: 1.65;
+}
+
+/* Headings — strong and consistent */
+h1, h2, h3, h4, h5 {
+  color: #000 !important;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Ensure all sections have fully opaque backgrounds */
+section {
+  background-color: #ffffff;   /* solid white unless overridden */
+  color: #111;
+}
+
+/* Alternate background sections */
+section.alt,
+.bg-light,
+.bg-gray,
+section[style*="f8fa"],
+section[style*="f8fafc"] {
+  background-color: #f8f9fa !important;   /* premium light-gray */
+  color: #111;
+}
+
+/* Fix list readability */
+ul, ol {
+  margin-left: 1.25rem;
+}
+
+/* Fix CTA buttons to ensure readability */
+.button.primary {
+  background: #f4c152 !important;
+  color: #000 !important;
+  font-weight: 700;
+}
+
+.button.secondary {
+  background: #2e2e2e !important;
+  color: #fff !important;
+}
+
+/* Prevent hero overlay from affecting next section */
+.page-hero + section {
+  background: #ffffff !important;
+  color: #111 !important;
+}
+
+/* Improve mobile header spacing */
+.site-header a {
+  color: #fff !important;
+}
+
+.nav-container {
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(2px);
+}
+
+/* Ensure footer readability */
+.site-footer, .site-footer p, .site-footer a {
+  color: #fff !important;
+}
