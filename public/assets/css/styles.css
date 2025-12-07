@@ -230,3 +230,65 @@ section * {
   z-index: 10;
   position: relative;
 }
+/* =========================================================================
+   GLOBAL VISIBILITY + READABILITY FIX (HERO BLEED + DARK OVERLAY ISSUES)
+   ========================================================================= */
+
+/* Prevent any hero overlay from covering the next section */
+.page-hero {
+  position: relative;
+  overflow: hidden !important;
+}
+
+.page-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: rgba(0,0,0,0.45); /* softened for readability */
+}
+
+/* Ensure first section after hero is NOT darkened */
+.page-hero + section {
+  background: #ffffff !important;
+  color: #111 !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================================
+   INSIGHT SERIES MODULE FIX — REMOVE TRANSPARENCY & DARK BACKGROUND
+   ========================================================================= */
+
+.insight-page,
+.insight-page section,
+.insight-page div,
+.insight-page article {
+  background: #ffffff !important;
+  color: #111 !important;
+}
+
+/* Module cards */
+.insight-module,
+[class*="module"],
+[class*="card"] {
+  background: #ffffff !important;
+  border: 1px solid #e5e5e5 !important;
+  color: #111 !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Fix headings */
+.insight-page h1,
+.insight-page h2,
+.insight-page h3 {
+  color: #000 !important;
+}
+
+/* Reset accidental global opacity from parent containers */
+section *, article *, div *, p *, li * {
+  opacity: 1 !important;
+}
