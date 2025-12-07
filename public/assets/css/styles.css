@@ -171,3 +171,30 @@ ul, ol {
 .site-footer, .site-footer p, .site-footer a {
   color: #fff !important;
 }
+/* FIX: Hero overlay bleeding into next sections */
+.page-hero {
+  position: relative;
+  overflow: hidden; /* prevent overlay from spilling into lower sections */
+}
+
+.page-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Ensure the next section starts clean with full opacity */
+.page-hero + section {
+  position: relative;
+  background: #ffffff !important;
+  color: #111 !important;
+  z-index: 1;
+}
+
+/* Kill ANY accidental opacity inheritance */
+section * {
+  opacity: 1 !important;
+}
