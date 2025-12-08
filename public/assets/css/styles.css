@@ -206,45 +206,48 @@ a:hover {
 .he-hero {
   position: relative;
   width: 100%;
-  min-height: 65vh;
+  min-height: 50vh;                /* shortened site-wide */
   background-size: cover;
   background-position: right center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  padding: 60px 5%;
+  padding: 40px 5%;                /* slightly reduced vertical padding */
   color: #ffffff;
   overflow: hidden;
 }
 
+/* Stronger overlay with a darker "bar" area toward the right for clearer contrast behind text.
+   Keep .he-hero-content above this (z-index:2). */
 .he-hero-overlay {
   position: absolute;
   inset: 0;
+  /* create a darker right-side band while still allowing image to show on left */
   background: linear-gradient(
     to right,
-    rgba(0,0,0,0.60) 20%,
-    rgba(0,0,0,0.35) 50%,
-    rgba(0,0,0,0.15) 100%
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.35) 30%,
+    rgba(0,0,0,0.75) 60%,
+    rgba(0,0,0,0.92) 100%
   );
   z-index: 1;
 }
 
-.he-hero-content {
+/* ensure hero content remains above overlay */
+.he-hero .he-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 750px;
-  opacity: 0;
-  animation: fadeUp 1s ease-out forwards;
 }
 
-.he-hero-content h1 {
-  font-size: 2.8rem;     /* typography scale choice */
-  color: #ffffff;
+/* Responsive hero height adjustments */
+@media (max-width: 900px) {
+  .he-hero { min-height: 45vh; }
 }
-
-.he-hero-content p {
-  font-size: 1.2rem;
-  color: #e8e8e8;
+@media (max-width: 768px) {
+  .he-hero { min-height: 40vh; padding: 36px 5%; }
+}
+@media (max-width: 420px) {
+  .he-hero { min-height: 35vh; padding: 28px 5%; }
 }
 
 /* Right-align hero text */
