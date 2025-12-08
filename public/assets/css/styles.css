@@ -438,3 +438,27 @@ a:hover {
 .about-hero .he-hero-content p {
   font-size: 1.15rem;
 }
+/* ===============================================================
+   Adjust hero image positioning across all pages (except membership)
+   Ensures the photo shows both Michael and Jack and text doesn't 
+   overlap his head on mobile
+   =============================================================== */
+
+.adjusted-hero {
+  background-position: center 20%; /* shift image down on desktop */
+}
+
+@media (max-width: 768px) {
+  .adjusted-hero {
+    background-position: center 30%; /* further down on mobile */
+  }
+}
+/* Adjust hero image placement on pages other than Membership */
+.adjusted-hero {
+  background-position: center 20%; /* shift down on desktop */
+}
+@media (max-width: 768px) {
+  .adjusted-hero {
+    background-position: center 30%; /* further down on mobile */
+  }
+}
