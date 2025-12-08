@@ -239,6 +239,43 @@ a:hover {
   color: #e8e8e8;
 }
 
+/* Right-align hero text */
+.hero-align-right .he-hero-content {
+  margin-left: auto;            /* push content to the right */
+  text-align: right;            /* right-align text */
+  max-width: 550px;             /* readable width */
+}
+
+.hero-align-right .he-hero-content h1,
+.hero-align-right .he-hero-content p {
+  text-align: right;
+}
+
+.hero-align-right .he-hero-overlay {
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0.65) 25%,       /* dark behind text area */
+    rgba(0,0,0,0.35) 60%,
+    rgba(0,0,0,0.15) 100%
+  );
+}
+
+/* Mobile adjustments for right-aligned hero */
+@media (max-width: 768px) {
+  .hero-align-right .he-hero-content {
+    text-align: center;
+    margin: auto;
+  }
+  .hero-align-right .he-hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.75) 20%,
+      rgba(0,0,0,0.45) 60%,
+      rgba(0,0,0,0.25) 100%
+    );
+  }
+}
+
 /* -----------------------------
    8. GROUPS TIMELINE
 ----------------------------- */
