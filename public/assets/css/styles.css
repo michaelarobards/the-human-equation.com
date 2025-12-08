@@ -1,22 +1,35 @@
-/* Base site styling for The Human Equation */
+/* =========================================================================
+   THE HUMAN EQUATION — GLOBAL THEME (DARK BASE + WHITE CONTENT BLOCKS)
+   ========================================================================= */
+
 html, body {
-  padding: 0;
   margin: 0;
+  padding: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #0f1419;
+  background-color: #0f1419;        /* Dark base */
+  color: #e7e9ea;
+  line-height: 1.65;
+}
+
+/* Universal fix for text clarity */
+p, li, span, a {
   color: #e7e9ea;
 }
 
-/* Header and Navigation */
+/* =========================================================================
+   HEADER & NAVIGATION
+   ========================================================================= */
+
 .site-header {
-  background: rgba(10, 12, 14, 0.8);
+  background: rgba(10,12,14,0.85);
   backdrop-filter: blur(8px);
   padding: 1rem 0;
   border-bottom: 1px solid #222;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 999;
 }
+
 .nav-container {
   width: 90%;
   max-width: 1200px;
@@ -25,6 +38,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
 }
+
 .logo {
   font-weight: 700;
   font-size: 1.1rem;
@@ -32,347 +46,302 @@ html, body {
   color: #f4bf4f;
   text-decoration: none;
 }
+
 .main-nav a {
   margin-left: 1.4rem;
   font-size: 0.95rem;
   color: #e7e9ea;
   text-decoration: none;
-  transition: opacity 0.3s;
+  transition: opacity 0.25s;
 }
+
 .main-nav a:hover {
-  opacity: 0.8;
+  opacity: 0.75;
 }
-.main-nav .active {
-  color: #f4bf4f;
-}
+
 .main-nav .cta {
   padding: 6px 12px;
   background: #f4bf4f;
-  color: #0f1419;
+  color: #0f1419 !important;
   border-radius: 4px;
   font-weight: 600;
 }
 
-/* Hero sections generic styling */
-.hero {
-  position: relative;
-  height: 70vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-}
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.45));
-}
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: auto;
-  padding: 2rem;
+/* =========================================================================
+   SPACING SYSTEM (PREMIUM SCROLL RHYTHM)
+   ========================================================================= */
+
+.section {
+  padding: 80px 5%;
 }
 
-/* Default button styles */
-.btn-primary,
-.btn-outline {
-  display: inline-block;
-  padding: 12px 22px;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn-primary {
-  background: #f4bf4f;
-  color: #0f1419;
-}
-.btn-outline {
-  border: 1px solid #f4bf4f;
-  color: #f4bf4f;
+.section-tight {
+  padding: 55px 5%;
 }
 
-/* General containers */
+.section-wide {
+  padding: 110px 5%;
+}
+
 .container {
   width: 90%;
   max-width: 1100px;
   margin: auto;
 }
-/* ---------------------------------------
-   GLOBAL READABILITY + CONTRAST FIX
-   --------------------------------------- */
 
-/* Ensure all text uses clear, high-contrast defaults */
-body, p, li, span, a {
-  color: #111 !important;      /* near-black for readability */
-  line-height: 1.65;
+/* =========================================================================
+   HYBRID THEME — WHITE CONTENT BLOCKS (SHARP EDGES)
+   ========================================================================= */
+
+.white-block {
+  background: #ffffff;
+  color: #111;
+  padding: 60px 5%;
 }
 
-/* Headings — strong and consistent */
-h1, h2, h3, h4, h5 {
-  color: #000 !important;
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-/* Ensure all sections have fully opaque backgrounds */
-section {
-  background-color: #ffffff;   /* solid white unless overridden */
+.card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 0px;     /* sharp edges */
+  padding: 30px;
   color: #111;
 }
 
-/* Alternate background sections */
-section.alt,
-.bg-light,
-.bg-gray,
-section[style*="f8fa"],
-section[style*="f8fafc"] {
-  background-color: #f8f9fa !important;   /* premium light-gray */
-  color: #111;
-}
-
-/* Fix list readability */
-ul, ol {
-  margin-left: 1.25rem;
-}
-
-/* Fix CTA buttons to ensure readability */
-.button.primary {
-  background: #f4c152 !important;
-  color: #000 !important;
-  font-weight: 700;
-}
-
-.button.secondary {
-  background: #2e2e2e !important;
-  color: #fff !important;
-}
-
-/* Prevent hero overlay from affecting next section */
-.page-hero + section {
-  background: #ffffff !important;
-  color: #111 !important;
-}
-
-/* Improve mobile header spacing */
-.site-header a {
-  color: #fff !important;
-}
-
-.nav-container {
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(2px);
-}
-
-/* Ensure footer readability */
-.site-footer, .site-footer p, .site-footer a {
-  color: #fff !important;
-}
-/* FIX: Hero overlay bleeding into next sections */
-.page-hero {
-  position: relative;
-  overflow: hidden; /* prevent overlay from spilling into lower sections */
-}
-
-.page-hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* Ensure the next section starts clean with full opacity */
-.page-hero + section {
-  position: relative;
-  background: #ffffff !important;
-  color: #111 !important;
-  z-index: 1;
-}
-
-/* Kill ANY accidental opacity inheritance */
-section * {
-  opacity: 1 !important;
-}
-/* ------------------------------
-   HERO FIX FOR MOBILE READABILITY
-   ------------------------------ */
-
-/* Reduce hero height on mobile to prevent overlap */
-@media (max-width: 768px) {
-  .page-hero.large {
-    min-height: 60vh !important; /* shorter hero */
-    padding-top: 4rem;
-    padding-bottom: 3rem;
-  }
-
-  .page-hero-overlay {
-    background: rgba(0,0,0,0.55) !important; /* lighter overlay */
-  }
-
-  .page-hero-content h1,
-  .page-hero-content p,
-  .cta-buttons a {
-    position: relative;
-    z-index: 2;
-    color: #ffffff !important; /* ensure readable white text */
-  }
-}
-
-/* Ensure next section is fully opaque and visible */
-.page-hero + section {
-  background: #ffffff !important;
-  color: #111 !important;
-  z-index: 10;
-  position: relative;
-}
-/* =========================================================================
-   GLOBAL VISIBILITY + READABILITY FIX (HERO BLEED + DARK OVERLAY ISSUES)
-   ========================================================================= */
-
-/* Prevent any hero overlay from covering the next section */
-.page-hero {
-  position: relative;
-  overflow: hidden !important;
-}
-
-.page-hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  background: rgba(0,0,0,0.45); /* softened for readability */
-}
-
-/* Ensure first section after hero is NOT darkened */
-.page-hero + section {
-  background: #ffffff !important;
-  color: #111 !important;
-  position: relative;
-  z-index: 2;
+.card:hover {
+  box-shadow: 0 4px 22px rgba(0,0,0,0.08);
 }
 
 /* =========================================================================
-   INSIGHT SERIES MODULE FIX — REMOVE TRANSPARENCY & DARK BACKGROUND
+   HOMEPAGE HERO — NEW ARCHITECTURE
    ========================================================================= */
 
-.insight-page,
-.insight-page section,
-.insight-page div,
-.insight-page article {
-  background: #ffffff !important;
-  color: #111 !important;
-}
-
-/* Module cards */
-.insight-module,
-[class*="module"],
-[class*="card"] {
-  background: #ffffff !important;
-  border: 1px solid #e5e5e5 !important;
-  color: #111 !important;
-  opacity: 1 !important;
-  filter: none !important;
-}
-
-/* Fix headings */
-.insight-page h1,
-.insight-page h2,
-.insight-page h3 {
-  color: #000 !important;
-}
-
-/* Reset accidental global opacity from parent containers */
-section *, article *, div *, p *, li * {
-  opacity: 1 !important;
-}
-/* =========================================================================
-   THE HUMAN EQUATION – MICHAEL HERO MODULE (ISOLATED & BRAND-CONSISTENT)
-   ========================================================================= */
-
-/* Prevent global overrides from breaking hero */
-.he-hero,
-.he-hero * {
-  background: none !important;
-  color: inherit !important;
-  opacity: 1 !important;
-}
-
-/* HERO WRAPPER */
 .he-hero {
   position: relative;
   width: 100%;
-  height: 82vh;
-  min-height: 520px;
-  background: url('/assets/images/michael-hero.jpg') center center/cover no-repeat;
+  min-height: 65vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right center;   /* Michael on right */
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0 5vw;
-  color: #fff;
+  padding: 60px 5%;
+  color: #ffffff;
+  overflow: hidden;
 }
 
-/* OVERLAY */
 .he-hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0,0,0,0.55) 25%,
-    rgba(0,0,0,0.30) 55%,
-    rgba(0,0,0,0.10) 100%
+    rgba(0,0,0,0.60) 20%,
+    rgba(0,0,0,0.35) 50%,
+    rgba(0,0,0,0.15) 100%
   );
   z-index: 1;
 }
 
-/* TEXT CONTENT */
 .he-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 650px;
-  animation: fadeUp 1.2s ease-out forwards;
+  max-width: 750px;
   opacity: 0;
+  animation: fadeUp 1.1s ease-out forwards;
 }
 
 .he-hero-content h1 {
-  font-size: 3.2rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 0.7rem;
-  color: #fff !important;
+  color: #fff;
+  margin-bottom: 18px;
 }
 
 .he-hero-content p {
-  font-size: 1.45rem;
-  color: #e8e8e8 !important;
+  font-size: 1.2rem;
+  color: #e8e8e8;
+  margin-bottom: 22px;
 }
 
-/* FADE ANIMATION */
+/* =========================================================================
+   HOMEPAGE CTAS
+   ========================================================================= */
+
+.cta-primary {
+  background: #f4bf4f;
+  color: #111;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  transition: opacity 0.25s;
+}
+
+.cta-primary:hover {
+  opacity: 0.85;
+}
+
+.cta-secondary {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-secondary:hover {
+  opacity: 0.85;
+}
+
+.cta-tertiary {
+  color: #f4bf4f;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-tertiary:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================================
+   GROUPS TIMELINE
+   ========================================================================= */
+
+.group-timeline {
+  max-width: 900px;
+  margin: auto;
+}
+
+.group-day {
+  margin-bottom: 60px;
+}
+
+.group-day h3 {
+  color: #f4bf4f;
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+}
+
+.group-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.group-time {
+  color: #f4bf4f;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.group-item h4 {
+  margin: 0 0 6px 0;
+  color: #111;
+}
+
+/* =========================================================================
+   INSIGHT SERIES (MODULAR EDUCATIONAL GRID)
+   ========================================================================= */
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 28px;
+}
+
+.insight-module {
+  background: #ffffff;
+  padding: 25px;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+  color: #111;
+  transition: box-shadow 0.3s ease;
+}
+
+.insight-module:hover {
+  box-shadow: 0 4px 22px rgba(0,0,0,0.08);
+}
+
+/* =========================================================================
+   JOURNEY PROGRESSION
+   ========================================================================= */
+
+.journey-step {
+  border-left: 3px solid #f4bf4f;
+  padding-left: 14px;
+  margin-bottom: 35px;
+}
+
+.journey-step h3 {
+  font-size: 1.35rem;
+  color: #111;
+}
+
+/* =========================================================================
+   FINAL CTA
+   ========================================================================= */
+
+.final-cta {
+  text-align: center;
+  padding: 110px 5%;
+}
+
+.final-cta h2 {
+  font-size: 2.4rem;
+  margin-bottom: 25px;
+}
+
+.final-cta p {
+  font-size: 1.2rem;
+  color: #e7e9ea;
+  margin-bottom: 25px;
+}
+
+/* =========================================================================
+   ANIMATIONS
+   ========================================================================= */
+
 @keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(20px); }
+  0% { opacity: 0; transform: translateY(22px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* MOBILE */
+.fade-up {
+  opacity: 0;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+/* =========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================= */
+
+@media (max-width: 900px) {
+  .he-hero-content h1 {
+    font-size: 2.4rem;
+  }
+}
+
 @media (max-width: 768px) {
   .he-hero {
-    justify-content: center;
-    text-align: center;
     background-position: center top;
-    height: 70vh;
+    min-height: 70vh;
   }
-  .he-hero-overlay {
-    background: rgba(0,0,0,0.6) !important;
+
+  .he-hero-content {
+    text-align: center;
   }
+
+  .group-item {
+    grid-template-columns: 55px 1fr;
+  }
+}
+
+@media (max-width: 480px) {
   .he-hero-content h1 {
-    font-size: 2.2rem;
-  }
-  .he-hero-content p {
-    font-size: 1.15rem;
+    font-size: 2rem;
   }
 }
