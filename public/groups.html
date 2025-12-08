@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<<<<<<< HEAD
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Groups — The Human Equation</title>
@@ -64,17 +63,26 @@
       }
     }
   </style>
-=======
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parenting Teens Test Widget</title>
-<link rel="stylesheet" href="/assets/css/styles.css" />
->>>>>>> fa4b988cb2824f5d7971a860352bcc88d7f789e3
 </head>
+
 <body>
 
-<h1 style="padding:20px; color:#fff;">Parenting Teens Widget Test</h1>
+<!-- ======================== HEADER ======================== -->
+<header class="site-header">
+  <div class="nav-container">
+    <a class="logo" href="/">THE HUMAN EQUATION</a>
+    <nav class="main-nav">
+      <a href="/groups.html" class="active">Groups</a>
+      <a href="/membership.html">Membership</a>
+      <a href="/insight.html">Insight Series</a>
+      <a href="/about.html">About</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/contact.html">Contact</a>
+      <a class="cta" href="/membership.html">Join</a>
+    </nav>
+  </div>
+</header>
 
-<<<<<<< HEAD
 <!-- ======================== HERO ======================== -->
 <section class="he-hero adjusted-hero hero-align-right">
   <div class="hero-frame" style="background-image:url('/images/jack-mike-hero.jpg');"></div>
@@ -261,18 +269,96 @@
     <!-- 20s Men -->
     <div id="widget-20smen" class="widget-section">
       <div class="widget-title">20s Men — Schedule</div>
-      <script src='https://app.squareup.com/appointments/buyer/widget/fmtetwk1qvjag5/LPQCJMZ045EAK.js'></scrip
-=======
-<section class="white-block">
-  <div class="container">
-    <h2>Parenting Teens — Schedule</h2>
-    <p>Select a date below to register.</p>
+      <script src='https://app.squareup.com/appointments/buyer/widget/fmtetwk1qvjag5/LPQCJMZ045EAK.js'></script>
+    </div>
 
-    <!-- EXACT SCRIPT YOU PROVIDED -->
-    <script src="https://app.squareup.com/appointments/buyer/widget/wdxpdv9rg8ymyo/LPQCJMZ045EAK.js"></script>
+    <!-- 20s LGBTQ -->
+    <div id="widget-20slgbtq" class="widget-section">
+      <div class="widget-title">20s LGBTQ — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/n6bd5vzdhq614o/LPQCJMZ045EAK.js'></script>
+    </div>
+
+    <!-- Insight -->
+    <div id="widget-insight" class="widget-section">
+      <div class="widget-title">Insight Series — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/n6bd5vzdhq614o/LPQCJMZ045EAK.js'></script>
+    </div>
+
+    <!-- Fatherhood -->
+    <div id="widget-fatherhood" class="widget-section">
+      <div class="widget-title">Modern Fatherhood — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/dw85hcac3k5mwy/LPQCJMZ045EAK.js'></script>
+    </div>
+
+    <!-- Motherhood -->
+    <div id="widget-motherhood" class="widget-section">
+      <div class="widget-title">Modern Motherhood — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/zhksems0o4s8px/LPQCJMZ045EAK.js'></script>
+    </div>
+
+    <!-- Live Stream -->
+    <div id="widget-livestream" class="widget-section">
+      <div class="widget-title">Saturday Live Stream — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/d25upqbqd276v4/LPQCJMZ045EAK.js'></script>
+    </div>
+
   </div>
 </section>
 
+<!-- ======================== FOOTER ======================== -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div><h4>The Human Equation</h4></div>
+    <div>
+      <ul>
+        <li><a href="/groups.html">Groups</a></li>
+        <li><a href="/membership.html">Membership</a></li>
+        <li><a href="/insight.html">Insight Series</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><a href="/about.html">About Michael</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="copyright">© 2025 The Human Equation. All rights reserved.</p>
+</footer>
+
+<!-- ======================== FLOATING CTA ======================== -->
+<div class="floating-cta scroll-btn" data-target="widget-autistic">
+  Join a Group — First Week Free
+</div>
+
+<!-- ======================== JS: SCROLL + FADE REVEAL ======================== -->
+<script>
+document.querySelectorAll(".scroll-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = btn.dataset.target;
+    if (!target) return;
+
+    // Hide all widget sections
+    document.querySelectorAll(".widget-section").forEach(sec => {
+      sec.classList.remove("visible");
+      sec.style.display = "none";
+      sec.style.opacity = 0;
+    });
+
+    // Reveal target widget
+    const section = document.getElementById(target);
+    section.style.display = "block";
+
+    setTimeout(() => {
+      section.classList.add("visible");
+    }, 50);
+
+    // Scroll
+    section.scrollIntoView({ behavior: "smooth" });
+  });
+});
+</script>
+
 </body>
 </html>
->>>>>>> fa4b988cb2824f5d7971a860352bcc88d7f789e3
