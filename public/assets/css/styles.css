@@ -207,14 +207,29 @@ a:hover {
   position: relative;
   width: 100%;
   min-height: 50vh;                /* shortened site-wide */
-  background-size: cover;
-  background-position: right center;
-  background-repeat: no-repeat;
+  background-color: #000;          /* black padding on both sides */
   display: flex;
   align-items: center;
   padding: 40px 5%;                /* slightly reduced vertical padding */
   color: #ffffff;
   overflow: hidden;
+}
+
+/* New: centered frame that actually shows the photo.
+   Keeps the image narrower than the viewport so left/right black bars show.
+   The frame sits behind the overlay (z-index:0). */
+.hero-frame {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(1100px, 92%);         /* adjust to taste; controls black padding width */
+  max-width: 1400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 70%;
+  z-index: 0;
 }
 
 /* Stronger overlay with a darker "bar" area toward the right for clearer contrast behind text.
@@ -237,6 +252,21 @@ a:hover {
 .he-hero .he-hero-content {
   position: relative;
   z-index: 2;
+}
+
+/* Updated reveal/adjusted rules now target the frame */
+.hero-reveal-bottom .hero-frame,
+.hero-reveal-bottom > .hero-frame {
+  background-position: center 75% !important;
+}
+@media (max-width: 768px) {
+  .hero-reveal-bottom .hero-frame { background-position: center 92% !important; }
+}
+
+/* keep existing adjusted-hero behaviour but applied to frame */
+.adjusted-hero .hero-frame { background-position: center 70%; }
+@media (max-width: 768px) {
+  .adjusted-hero .hero-frame { background-position: center 85% !important; }
 }
 
 /* Responsive hero height adjustments */
