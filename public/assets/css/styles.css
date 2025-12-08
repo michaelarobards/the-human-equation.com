@@ -101,3 +101,278 @@ html, body {
   max-width: 1100px;
   margin: auto;
 }
+/* ---------------------------------------
+   GLOBAL READABILITY + CONTRAST FIX
+   --------------------------------------- */
+
+/* Ensure all text uses clear, high-contrast defaults */
+body, p, li, span, a {
+  color: #111 !important;      /* near-black for readability */
+  line-height: 1.65;
+}
+
+/* Headings — strong and consistent */
+h1, h2, h3, h4, h5 {
+  color: #000 !important;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* Ensure all sections have fully opaque backgrounds */
+section {
+  background-color: #ffffff;   /* solid white unless overridden */
+  color: #111;
+}
+
+/* Alternate background sections */
+section.alt,
+.bg-light,
+.bg-gray,
+section[style*="f8fa"],
+section[style*="f8fafc"] {
+  background-color: #f8f9fa !important;   /* premium light-gray */
+  color: #111;
+}
+
+/* Fix list readability */
+ul, ol {
+  margin-left: 1.25rem;
+}
+
+/* Fix CTA buttons to ensure readability */
+.button.primary {
+  background: #f4c152 !important;
+  color: #000 !important;
+  font-weight: 700;
+}
+
+.button.secondary {
+  background: #2e2e2e !important;
+  color: #fff !important;
+}
+
+/* Prevent hero overlay from affecting next section */
+.page-hero + section {
+  background: #ffffff !important;
+  color: #111 !important;
+}
+
+/* Improve mobile header spacing */
+.site-header a {
+  color: #fff !important;
+}
+
+.nav-container {
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(2px);
+}
+
+/* Ensure footer readability */
+.site-footer, .site-footer p, .site-footer a {
+  color: #fff !important;
+}
+/* FIX: Hero overlay bleeding into next sections */
+.page-hero {
+  position: relative;
+  overflow: hidden; /* prevent overlay from spilling into lower sections */
+}
+
+.page-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Ensure the next section starts clean with full opacity */
+.page-hero + section {
+  position: relative;
+  background: #ffffff !important;
+  color: #111 !important;
+  z-index: 1;
+}
+
+/* Kill ANY accidental opacity inheritance */
+section * {
+  opacity: 1 !important;
+}
+/* ------------------------------
+   HERO FIX FOR MOBILE READABILITY
+   ------------------------------ */
+
+/* Reduce hero height on mobile to prevent overlap */
+@media (max-width: 768px) {
+  .page-hero.large {
+    min-height: 60vh !important; /* shorter hero */
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  .page-hero-overlay {
+    background: rgba(0,0,0,0.55) !important; /* lighter overlay */
+  }
+
+  .page-hero-content h1,
+  .page-hero-content p,
+  .cta-buttons a {
+    position: relative;
+    z-index: 2;
+    color: #ffffff !important; /* ensure readable white text */
+  }
+}
+
+/* Ensure next section is fully opaque and visible */
+.page-hero + section {
+  background: #ffffff !important;
+  color: #111 !important;
+  z-index: 10;
+  position: relative;
+}
+/* =========================================================================
+   GLOBAL VISIBILITY + READABILITY FIX (HERO BLEED + DARK OVERLAY ISSUES)
+   ========================================================================= */
+
+/* Prevent any hero overlay from covering the next section */
+.page-hero {
+  position: relative;
+  overflow: hidden !important;
+}
+
+.page-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: rgba(0,0,0,0.45); /* softened for readability */
+}
+
+/* Ensure first section after hero is NOT darkened */
+.page-hero + section {
+  background: #ffffff !important;
+  color: #111 !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================================
+   INSIGHT SERIES MODULE FIX — REMOVE TRANSPARENCY & DARK BACKGROUND
+   ========================================================================= */
+
+.insight-page,
+.insight-page section,
+.insight-page div,
+.insight-page article {
+  background: #ffffff !important;
+  color: #111 !important;
+}
+
+/* Module cards */
+.insight-module,
+[class*="module"],
+[class*="card"] {
+  background: #ffffff !important;
+  border: 1px solid #e5e5e5 !important;
+  color: #111 !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Fix headings */
+.insight-page h1,
+.insight-page h2,
+.insight-page h3 {
+  color: #000 !important;
+}
+
+/* Reset accidental global opacity from parent containers */
+section *, article *, div *, p *, li * {
+  opacity: 1 !important;
+}
+/* =========================================================================
+   THE HUMAN EQUATION – MICHAEL HERO MODULE (ISOLATED & BRAND-CONSISTENT)
+   ========================================================================= */
+
+/* Prevent global overrides from breaking hero */
+.he-hero,
+.he-hero * {
+  background: none !important;
+  color: inherit !important;
+  opacity: 1 !important;
+}
+
+/* HERO WRAPPER */
+.he-hero {
+  position: relative;
+  width: 100%;
+  height: 82vh;
+  min-height: 520px;
+  background: url('/assets/images/michael-hero.jpg') center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 5vw;
+  color: #fff;
+}
+
+/* OVERLAY */
+.he-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.55) 25%,
+    rgba(0,0,0,0.30) 55%,
+    rgba(0,0,0,0.10) 100%
+  );
+  z-index: 1;
+}
+
+/* TEXT CONTENT */
+.he-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  animation: fadeUp 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+.he-hero-content h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: #fff !important;
+}
+
+.he-hero-content p {
+  font-size: 1.45rem;
+  color: #e8e8e8 !important;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .he-hero {
+    justify-content: center;
+    text-align: center;
+    background-position: center top;
+    height: 70vh;
+  }
+  .he-hero-overlay {
+    background: rgba(0,0,0,0.6) !important;
+  }
+  .he-hero-content h1 {
+    font-size: 2.2rem;
+  }
+  .he-hero-content p {
+    font-size: 1.15rem;
+  }
+}
