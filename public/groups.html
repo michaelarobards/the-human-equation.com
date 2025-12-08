@@ -6,19 +6,61 @@
   <title>Groups — The Human Equation</title>
 
   <link rel="stylesheet" href="/assets/css/styles.css" />
-  <meta name="description" content="Weekly therapist-led identity, parenting, and adulthood support groups. Your first week is free.">
+  <meta name="description" content="Weekly therapist-led support and identity-growth groups at The Human Equation. Join Parenting, Fatherhood, Motherhood, 20s groups, or Insight Series sessions." />
 
   <style>
     .scroll-btn { cursor: pointer; }
-    .floating-cta {
-      position: fixed; bottom: 24px; right: 24px;
-      background:#f4bf4f; color:#000; padding:14px 22px;
-      border-radius:6px; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,0.25);
-      cursor:pointer; z-index:999;
-    }
+
     .new-member-box {
-      background:#fafafa; padding:25px; border-radius:6px; margin-top:35px;
+      background:#fafafa;
+      padding:25px;
+      border-radius:6px;
+      margin-top:35px;
       border-left:5px solid #f4bf4f;
+    }
+
+    /* Widget reveal wrapper */
+    .widget-section {
+      display:none;                /* hidden by default */
+      opacity:0;                   /* fade start */
+      transition:opacity 0.7s ease;
+      margin-top:40px;
+      padding-top:20px;
+      border-top: 2px solid #eee;
+    }
+    .widget-section.visible {
+      display:block;
+      opacity:1;
+    }
+
+    .widget-title {
+      font-size:1.6rem;
+      font-weight:700;
+      margin-bottom:15px;
+      color:#111 !important;
+    }
+
+    .floating-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background:#f4bf4f;
+      color:#000;
+      padding:14px 22px;
+      border-radius:6px;
+      font-weight:700;
+      box-shadow:0 4px 12px rgba(0,0,0,0.25);
+      cursor:pointer;
+      z-index:999;
+      font-size:0.95rem;
+    }
+
+    @media (max-width: 600px) {
+      .floating-cta {
+        left: 12px;
+        right: 12px;
+        text-align:center;
+      }
     }
   </style>
 </head>
@@ -45,7 +87,6 @@
 <section class="he-hero adjusted-hero hero-align-right">
   <div class="hero-frame" style="background-image:url('/images/jack-mike-hero.jpg');"></div>
   <div class="he-hero-overlay"></div>
-
   <div class="he-hero-content">
     <h1>Weekly Groups</h1>
     <p>Where identity grows, relationships heal, and community makes everything possible.</p>
@@ -56,13 +97,12 @@
 <section class="white-block fade-up">
   <div class="container">
     <h2>How to Join a Group</h2>
-
     <div class="new-member-box">
-      <p><strong>1.</strong> Read through the groups below to see which one fits your season of life.</p>
-      <p><strong>2.</strong> Click <strong>“Join This Group”</strong> to jump down to the live schedule.</p>
-      <p><strong>3.</strong> Pick any session date & register — <strong>your first week is free.</strong></p>
-      <p><strong>4.</strong> Check your email for a welcome message + link to join the community.</p>
-      <p><strong>5.</strong> If you're unsure which group fits best, <strong>book a free orientation call with Michael</strong> below.</p>
+      <p><strong>1.</strong> Read the group descriptions below.</p>
+      <p><strong>2.</strong> Click <strong>“Join This Group”</strong> — the page will scroll and reveal that group’s live schedule.</p>
+      <p><strong>3.</strong> Choose your date → <strong>Your first week is free.</strong></p>
+      <p><strong>4.</strong> Check your email for your welcome message + Mighty Networks access.</p>
+      <p><strong>5.</strong> Still uncertain? Book a <strong>free orientation call</strong> below.</p>
     </div>
   </div>
 </section>
@@ -74,49 +114,49 @@
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; margin-top:40px;">
 
-      <!-- Monday -->
+      <!-- Autistic Kids -->
       <div class="card">
         <h3>Parenting Autistic Kids & Teens</h3>
-        <p><strong>Monday • 3:00 PM EST</strong></p>
-        <p><em>Who it’s for:</em> Parents navigating neurodivergence with their kids or teens.</p>
-        <p><em>What you’ll gain:</em> Clarity, confidence, and tools for connection.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Monday • 3 PM EST</strong></p>
+        <p><em>Who it’s for:</em> Parents navigating neurodivergence.</p>
+        <p><em>What you’ll gain:</em> Clarity, confidence, connection.</p>
+        <button class="cta-primary scroll-btn" data-target="widget-autistic">Join This Group</button>
       </div>
 
-      <!-- Tuesday -->
+      <!-- Parenting Teens -->
       <div class="card">
         <h3>Parenting Teens</h3>
-        <p><strong>Tuesday • 3:00 PM EST</strong></p>
-        <p><em>Who it’s for:</em> Parents navigating identity, boundaries, and communication with teens.</p>
-        <p><em>What you’ll gain:</em> Strategies for staying connected in a rapidly changing season.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Tuesday • 3 PM EST</strong></p>
+        <p><em>Who it’s for:</em> Parents overwhelmed by teen identity shifts.</p>
+        <p><em>What you’ll gain:</em> Communication tools & grounded support.</p>
+        <button class="cta-primary scroll-btn" data-target="widget-teens">Join This Group</button>
       </div>
 
-      <!-- Wednesday -->
+      <!-- Trans/GNC -->
       <div class="card">
         <h3>Parents of Trans & Gender Nonconforming Teens</h3>
-        <p><strong>Wednesday • 3:00 PM EST</strong></p>
-        <p><em>Who it’s for:</em> Parents supporting a gender-expansive or transitioning teen.</p>
-        <p><em>What you’ll gain:</em> Stability, affirmation, and therapeutic guidance.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Wednesday • 3 PM EST</strong></p>
+        <p><em>Who it’s for:</em> Parents supporting gender-expansive teens.</p>
+        <p><em>What you’ll gain:</em> Affirmation, guidance, stability.</p>
+        <button class="cta-primary scroll-btn" data-target="widget-trans">Join This Group</button>
       </div>
 
-      <!-- Thursday -->
+      <!-- Grief -->
       <div class="card">
         <h3>Parents Grief Group</h3>
-        <p><strong>Thursday • 3:00 PM EST</strong></p>
-        <p><em>Who it’s for:</em> Any parent walking through profound loss.</p>
-        <p><em>What you’ll gain:</em> Support, grounding, and a space to breathe again.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Thursday • 3 PM EST</strong></p>
+        <p><em>Who it’s for:</em> Parents carrying profound loss.</p>
+        <p><em>What you’ll gain:</em> Sanctuary, understanding, breathing room.</p>
+        <button class="cta-primary scroll-btn" data-target="widget-grief">Join This Group</button>
       </div>
 
-      <!-- Friday -->
+      <!-- Suicide Survivors -->
       <div class="card">
         <h3>Survivors of Suicide (Parents)</h3>
-        <p><strong>Friday • 3:00 PM EST</strong></p>
-        <p><em>Who it’s for:</em> Parents grieving the loss of a child or loved one to suicide.</p>
-        <p><em>What you’ll gain:</em> Gentle community, understanding, and support.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Friday • 3 PM EST</strong></p>
+        <p><em>Who it’s for:</em> Parents grieving a loved one lost to suicide.</p>
+        <p><em>What you’ll gain:</em> Gentleness, grounding, support.</p>
+        <button class="cta-primary scroll-btn" data-target="widget-suicide">Join This Group</button>
       </div>
 
     </div>
@@ -132,18 +172,16 @@
 
       <div class="card">
         <h3>20s Men — Identity, Purpose & Relationships</h3>
-        <p><strong>Wednesday • 6:00 PM EST</strong></p>
-        <p><em>Who it’s for:</em> Young men seeking clarity in identity and direction.</p>
-        <p><em>What you’ll gain:</em> Emotional intelligence, purpose, and community.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Wednesday • 6 PM EST</strong></p>
+        <p><em>Who it’s for:</em> Men navigating adulthood & purpose.</p>
+        <button class="cta-primary scroll-btn" data-target="widget-20smen">Join This Group</button>
       </div>
 
       <div class="card">
         <h3>20s LGBTQ — Belonging, Identity & Community</h3>
-        <p><strong>Wednesday • 7:00 PM EST</strong></p>
-        <p><em>Who it’s for:</em> LGBTQ young adults exploring identity and belonging.</p>
-        <p><em>What you’ll gain:</em> Connection, understanding, and a grounded space.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Wednesday • 7 PM EST</strong></p>
+        <p><em>Who it’s for:</em> LGBTQ young adults seeking clarity & belonging.</p>
+        <button class="cta-primary scroll-btn" data-target="widget-20slgbtq">Join This Group</button>
       </div>
 
     </div>
@@ -154,36 +192,31 @@
 <section class="white-block fade-up">
   <div class="container">
     <h2>The Saturday Growth Track</h2>
-    <p>Spend your Saturdays rebuilding identity, parenting confidence, and community — one hour at a time.</p>
 
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; margin-top:40px;">
 
       <div class="card">
         <h3>The Insight Series</h3>
-        <p><strong>Saturday • 12:00 PM EST</strong></p>
-        <p>Your identity reconstruction cornerstone. Personality, attachment, and narrative repair.</p>
-        <button class="cta-primary scroll-btn">Join Insight Series</button>
+        <p><strong>Saturday • 12 PM EST</strong></p>
+        <button class="cta-primary scroll-btn" data-target="widget-insight">Join Insight Series</button>
       </div>
 
       <div class="card">
         <h3>Modern Fatherhood</h3>
-        <p><strong>Saturday • 2:00 PM EST</strong></p>
-        <p>Humility-based leadership, identity repair, and fatherhood redefined.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Saturday • 2 PM EST</strong></p>
+        <button class="cta-primary scroll-btn" data-target="widget-fatherhood">Join This Group</button>
       </div>
 
       <div class="card">
         <h3>Modern Motherhood</h3>
-        <p><strong>Saturday • 3:00 PM EST</strong></p>
-        <p>Rebuilding identity, emotional regulation, and healthy co-parenting.</p>
-        <button class="cta-primary scroll-btn">Join This Group</button>
+        <p><strong>Saturday • 3 PM EST</strong></p>
+        <button class="cta-primary scroll-btn" data-target="widget-motherhood">Join This Group</button>
       </div>
 
       <div class="card">
         <h3>Saturday Live Stream</h3>
-        <p><strong>Saturday • 4:00–5:00 PM EST</strong></p>
-        <p>Weekly community learning, identity integration, and open discussion.</p>
-        <button class="cta-primary scroll-btn">Join Live Stream</button>
+        <p><strong>Saturday • 4 PM EST</strong></p>
+        <button class="cta-primary scroll-btn" data-target="widget-livestream">Join Live Stream</button>
       </div>
 
     </div>
@@ -194,58 +227,46 @@
 <section class="white-block fade-up">
   <div class="container">
     <h2>Not Sure Where to Start?</h2>
-    <p>Schedule a free 10-minute orientation call with Michael. He’ll help you find the perfect group.</p>
+    <p>Book a free 10-minute orientation call with Michael.</p>
     <a href="#" id="orientation-link" class="cta-primary">Book Orientation Call</a>
   </div>
 </section>
 
-<!-- ======================== LIVE SQUARE SCHEDULE ======================== -->
-<section class="white-block fade-up" id="schedule">
-  <div class="container schedule-anchor">
-    <h2>Live Weekly Schedule</h2>
-    <p>Select any session below to reserve your spot.</p>
+<!-- ======================== WIDGET SECTIONS ======================== -->
+<section class="white-block fade-up">
+  <div class="container">
 
-    <!-- Start Square Appointments Embed Code -->
-    <script src="https://square.site/appointments/buyer/widget/utfyz4199o429i/LPQCJMZ045EAK.js"></script>
-    <!-- End Square Appointments Embed Code -->
-
-  </div>
-</section>
-
-<!-- ======================== FOOTER ======================== -->
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div><h4>The Human Equation</h4></div>
-    <div>
-      <ul>
-        <li><a href="/groups.html">Groups</a></li>
-        <li><a href="/membership.html">Membership</a></li>
-        <li><a href="/insight.html">Insight Series</a></li>
-      </ul>
+    <!-- Parenting Autistic Kids -->
+    <div id="widget-autistic" class="widget-section">
+      <div class="widget-title">Parenting Autistic Kids & Teens — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/7vo6njbishbmfo/LPQCJMZ045EAK.js'></script>
     </div>
-    <div>
-      <ul>
-        <li><a href="/about.html">About Michael</a></li>
-        <li><a href="/blog.html">Blog</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul>
+
+    <!-- Parenting Teens -->
+    <div id="widget-teens" class="widget-section">
+      <div class="widget-title">Parenting Teens — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/mrha4nj5mumjoh/LPQCJMZ045EAK.js'></script>
     </div>
-  </div>
 
-  <p class="copyright">© 2025 The Human Equation. All rights reserved.</p>
-</footer>
+    <!-- Parents of Trans/GNC -->
+    <div id="widget-trans" class="widget-section">
+      <div class="widget-title">Parents of Trans & GNC Teens — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/gabzfdqii8afu5/LPQCJMZ045EAK.js'></script>
+    </div>
 
-<!-- ======================== FLOATING CTA ======================== -->
-<div class="floating-cta scroll-btn">Join a Group — First Week Free</div>
+    <!-- Parents Grief -->
+    <div id="widget-grief" class="widget-section">
+      <div class="widget-title">Parents Grief Group — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/j95x4lh6dhckdu/LPQCJMZ045EAK.js'></script>
+    </div>
 
-<!-- ======================== SCROLL LOGIC ======================== -->
-<script>
-document.querySelectorAll(".scroll-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.getElementById("schedule").scrollIntoView({ behavior: "smooth" });
-  });
-});
-</script>
+    <!-- Suicide Survivors -->
+    <div id="widget-suicide" class="widget-section">
+      <div class="widget-title">Survivors of Suicide (Parents) — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/hvruib52tzu6xg/LPQCJMZ045EAK.js'></script>
+    </div>
 
-</body>
-</html>
+    <!-- 20s Men -->
+    <div id="widget-20smen" class="widget-section">
+      <div class="widget-title">20s Men — Schedule</div>
+      <script src='https://app.squareup.com/appointments/buyer/widget/fmtetwk1qvjag5/LPQCJMZ045EAK.js'></scrip
