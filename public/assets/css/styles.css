@@ -215,20 +215,19 @@ a:hover {
   overflow: hidden;
 }
 
-/* New: centered frame that actually shows the photo.
-   Keeps the image narrower than the viewport so left/right black bars show.
-   The frame sits behind the overlay (z-index:0). */
+/* New: make the hero image fit the frame height so top/bottom are visible.
+   This uses height-fit (auto 100%) instead of cover which crops vertically. */
 .hero-frame {
   position: absolute;
   left: 50%;
   top: 0;
   bottom: 0;
   transform: translateX(-50%);
-  width: min(1100px, 92%);         /* adjust to taste; controls black padding width */
+  width: min(1100px, 86%);        /* narrower frame gives larger black side bars */
   max-width: 1400px;
-  background-size: cover;
+  background-size: auto 100%;     /* fit image to frame height so top/bottom appear */
   background-repeat: no-repeat;
-  background-position: center 70%;
+  background-position: center 60%;/* default vertical focal point (tweak if needed) */
   z-index: 0;
 }
 
@@ -257,10 +256,10 @@ a:hover {
 /* Updated reveal/adjusted rules now target the frame */
 .hero-reveal-bottom .hero-frame,
 .hero-reveal-bottom > .hero-frame {
-  background-position: center 75% !important;
+  background-position: center 82% !important;
 }
 @media (max-width: 768px) {
-  .hero-reveal-bottom .hero-frame { background-position: center 92% !important; }
+  .hero-reveal-bottom .hero-frame { background-position: center 95% !important; }
 }
 
 /* keep existing adjusted-hero behaviour but applied to frame */
@@ -268,6 +267,9 @@ a:hover {
 @media (max-width: 768px) {
   .adjusted-hero .hero-frame { background-position: center 85% !important; }
 }
+
+/* Ensure the section itself has a solid black background so side "bars" never show image */
+.he-hero { background-color: #000 !important; }
 
 /* Responsive hero height adjustments */
 @media (max-width: 900px) {
