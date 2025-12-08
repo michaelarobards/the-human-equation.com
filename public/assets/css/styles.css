@@ -539,3 +539,14 @@ a:hover {
     background-position: center 85%; /* prioritize bottom subject on phones */
   }
 }
+
+/* Utility: reveal the bottom of hero images (shows dog/low subjects).
+   Uses !important to override other hero background-position rules. */
+.hero-reveal-bottom {
+  background-position: center 75% !important;
+}
+@media (max-width: 768px) {
+  .hero-reveal-bottom {
+    background-position: center 92% !important; /* prioritize bottom on small screens */
+  }
+}
