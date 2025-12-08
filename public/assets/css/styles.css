@@ -243,7 +243,8 @@ a:hover {
 .hero-align-right .he-hero-content {
   margin-left: auto;            /* push content to the right */
   text-align: right;            /* right-align text */
-  max-width: 550px;             /* readable width */
+  margin-right: 5%;             /* keep content away from edge */
+  max-width: 620px;             /* readable width */
 }
 
 .hero-align-right .he-hero-content h1,
