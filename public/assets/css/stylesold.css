@@ -462,3 +462,94 @@ a:hover {
     background-position: center 30%; /* further down on mobile */
   }
 }
+/* =========================================================================
+   1. Adjust hero image for Membership page (moves photo further down)
+   ========================================================================= */
+.membership-hero {
+  background-position: center 35%;  /* show more of the top of your head */
+}
+
+/* Also adjust for smaller screens if needed */
+@media (max-width: 768px) {
+  .membership-hero {
+    background-position: center 40%;
+  }
+}
+
+/* =========================================================================
+   2. Right-align hero text (apply to pages that need it)
+   ========================================================================= */
+.hero-align-right .he-hero-content {
+  text-align: right;
+  margin-left: auto;   /* push text to the right */
+  margin-right: 0;
+}
+
+.hero-align-right .he-hero-content h1,
+.hero-align-right .he-hero-content p {
+  text-align: right;
+}
+/* Move all hero images downward so Michael's head isn't cropped. */
+.adjusted-hero {
+  background-position: center 30%;      /* default desktop */
+}
+@media (max-width: 768px) {
+  .adjusted-hero {
+    background-position: center 45%;    /* deeper shift on mobile */
+  }
+}
+
+/* Extra adjustment for Membership page (head cropping was worst here). */
+.membership-hero {
+  background-position: center 40%;     /* pushes image even lower on desktop */
+}
+@media (max-width: 768px) {
+  .membership-hero {
+    background-position: center 55%;   /* pushes image lower on mobile */
+  }
+}
+
+/* Align hero text to the right on every page that needs it. */
+.hero-align-right .he-hero-content {
+  text-align: right;
+  margin-left: auto;
+  margin-right: 5%;
+}
+.hero-align-right .he-hero-content h1,
+.hero-align-right .he-hero-content p {
+  text-align: right;
+}
+/* ============================================
+   HERO RIGHT-ALIGNED LAYOUT OPTION
+   ============================================ */
+
+.hero-align-right .he-hero-content {
+  margin-left: auto;            /* push content to the right */
+  text-align: right;            /* right-align text */
+  max-width: 550px;             /* readable width */
+}
+
+.hero-align-right .he-hero-overlay {
+  background: linear-gradient(
+    to left,
+    rgba(0,0,0,0.65) 25%,       /* dark behind text area */
+    rgba(0,0,0,0.35) 60%,
+    rgba(0,0,0,0.15) 100%
+  );
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .hero-align-right .he-hero-content {
+    text-align: center;
+    margin: auto;
+  }
+  .hero-align-right .he-hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.75) 20%,
+      rgba(0,0,0,0.45) 60%,
+      rgba(0,0,0,0.25) 100%
+    );
+  }
+}
