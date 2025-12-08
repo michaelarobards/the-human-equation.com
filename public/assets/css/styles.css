@@ -1,75 +1,47 @@
 /* =========================================================================
-   THE HUMAN EQUATION — GLOBAL THEME (DARK BASE + WHITE CONTENT BLOCKS)
+   THE HUMAN EQUATION — GLOBAL DESIGN SYSTEM
+   Hybrid Theme (Dark Base + White Sections)
+   Clean, Premium, Conversion-Optimized
    ========================================================================= */
 
+/* -----------------------------
+   1. BASE HTML / BODY
+----------------------------- */
 html, body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background-color: #0f1419;        /* Dark base */
+  background-color: #0f1419;   /* Dark base */
   color: #e7e9ea;
   line-height: 1.65;
+  scroll-behavior: smooth;
 }
 
-/* Universal fix for text clarity */
-p, li, span, a {
+/* Standard typography */
+h1, h2, h3, h4, h5 {
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+}
+
+p, li, span {
+  font-size: 1.05rem;
   color: #e7e9ea;
 }
 
-/* =========================================================================
-   HEADER & NAVIGATION
-   ========================================================================= */
-
-.site-header {
-  background: rgba(10,12,14,0.85);
-  backdrop-filter: blur(8px);
-  padding: 1rem 0;
-  border-bottom: 1px solid #222;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-.nav-container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 1px;
+/* Global link styling */
+a {
   color: #f4bf4f;
   text-decoration: none;
 }
-
-.main-nav a {
-  margin-left: 1.4rem;
-  font-size: 0.95rem;
-  color: #e7e9ea;
-  text-decoration: none;
-  transition: opacity 0.25s;
+a:hover {
+  opacity: 0.8;
 }
 
-.main-nav a:hover {
-  opacity: 0.75;
-}
-
-.main-nav .cta {
-  padding: 6px 12px;
-  background: #f4bf4f;
-  color: #0f1419 !important;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-/* =========================================================================
-   SPACING SYSTEM (PREMIUM SCROLL RHYTHM)
-   ========================================================================= */
+/* -----------------------------
+   2. GLOBAL SPACING SYSTEM
+----------------------------- */
 
 .section {
   padding: 80px 5%;
@@ -89,39 +61,147 @@ p, li, span, a {
   margin: auto;
 }
 
-/* =========================================================================
-   HYBRID THEME — WHITE CONTENT BLOCKS (SHARP EDGES)
-   ========================================================================= */
+/* -----------------------------
+   3. HYBRID THEME: WHITE BLOCKS
+----------------------------- */
 
 .white-block {
   background: #ffffff;
-  color: #111;
-  padding: 60px 5%;
+  color: #111111;
+  padding: 80px 5%;
 }
+
+.white-block * {
+  color: #111111 !important;
+}
+
+/* Headings inside white blocks */
+.white-block h1,
+.white-block h2,
+.white-block h3 {
+  color: #000 !important;
+}
+
+/* Paragraphs inside white blocks */
+.white-block p,
+.white-block li {
+  color: #333 !important;
+}
+
+/* Cards inside white blocks */
+.white-block .card,
+.white-block .card * {
+  color: #111 !important;
+}
+
+/* -----------------------------
+   4. HEADER & NAVIGATION
+----------------------------- */
+
+.site-header {
+  background: rgba(10,12,14,0.85);
+  backdrop-filter: blur(8px);
+  padding: 1rem 0;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #f4bf4f;
+}
+
+.main-nav a {
+  margin-left: 1.4rem;
+  font-size: 0.95rem;
+  color: #e7e9ea;
+  transition: opacity 0.25s;
+}
+
+.main-nav a:hover {
+  opacity: 0.75;
+}
+
+.main-nav .cta {
+  padding: 6px 12px;
+  background: #f4bf4f;
+  color: #0f1419 !important;
+  border-radius: 6px;        /* softer CTAs */
+  font-weight: 600;
+}
+
+/* -----------------------------
+   5. CTA BUTTONS (Unified System)
+----------------------------- */
+
+.cta-primary {
+  background: #f4bf4f;
+  color: #111;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  display: inline-block;
+  transition: opacity 0.25s;
+}
+.cta-primary:hover { opacity: 0.85; }
+
+.cta-secondary {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.cta-secondary:hover { opacity: 0.85; }
+
+.cta-tertiary {
+  color: #f4bf4f;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.cta-tertiary:hover { text-decoration: underline; }
+
+/* -----------------------------
+   6. CARDS (Sharp Edges)
+----------------------------- */
 
 .card {
   background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 0px;     /* sharp edges */
-  padding: 30px;
   color: #111;
+  border: 1px solid #ddd;
+  border-radius: 0px;     /* sharp */
+  padding: 30px;
+  transition: box-shadow 0.25s ease;
 }
-
 .card:hover {
   box-shadow: 0 4px 22px rgba(0,0,0,0.08);
 }
 
-/* =========================================================================
-   HOMEPAGE HERO — NEW ARCHITECTURE
-   ========================================================================= */
+/* -----------------------------
+   7. HOMEPAGE HERO (modular)
+----------------------------- */
 
 .he-hero {
   position: relative;
   width: 100%;
   min-height: 65vh;
   background-size: cover;
+  background-position: right center;
   background-repeat: no-repeat;
-  background-position: right center;   /* Michael on right */
   display: flex;
   align-items: center;
   padding: 60px 5%;
@@ -146,69 +226,22 @@ p, li, span, a {
   z-index: 2;
   max-width: 750px;
   opacity: 0;
-  animation: fadeUp 1.1s ease-out forwards;
+  animation: fadeUp 1s ease-out forwards;
 }
 
 .he-hero-content h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 18px;
+  font-size: 2.8rem;     /* typography scale choice */
+  color: #ffffff;
 }
 
 .he-hero-content p {
   font-size: 1.2rem;
   color: #e8e8e8;
-  margin-bottom: 22px;
 }
 
-/* =========================================================================
-   HOMEPAGE CTAS
-   ========================================================================= */
-
-.cta-primary {
-  background: #f4bf4f;
-  color: #111;
-  padding: 12px 20px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  display: inline-block;
-  transition: opacity 0.25s;
-}
-
-.cta-primary:hover {
-  opacity: 0.85;
-}
-
-.cta-secondary {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.35);
-  color: #ffffff;
-  padding: 12px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.cta-secondary:hover {
-  opacity: 0.85;
-}
-
-.cta-tertiary {
-  color: #f4bf4f;
-  font-size: 1rem;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.cta-tertiary:hover {
-  text-decoration: underline;
-}
-
-/* =========================================================================
-   GROUPS TIMELINE
-   ========================================================================= */
+/* -----------------------------
+   8. GROUPS TIMELINE
+----------------------------- */
 
 .group-timeline {
   max-width: 900px;
@@ -243,36 +276,35 @@ p, li, span, a {
   color: #111;
 }
 
-/* =========================================================================
-   INSIGHT SERIES (MODULAR EDUCATIONAL GRID)
-   ========================================================================= */
+/* -----------------------------
+   9. INSIGHT SERIES GRID
+----------------------------- */
 
 .insight-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 28px;
 }
 
 .insight-module {
   background: #ffffff;
-  padding: 25px;
   border: 1px solid #e5e5e5;
   border-radius: 0;
+  padding: 25px;
   color: #111;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.25s ease;
 }
-
 .insight-module:hover {
   box-shadow: 0 4px 22px rgba(0,0,0,0.08);
 }
 
-/* =========================================================================
-   JOURNEY PROGRESSION
-   ========================================================================= */
+/* -----------------------------
+   10. JOURNEY SECTION
+----------------------------- */
 
 .journey-step {
   border-left: 3px solid #f4bf4f;
-  padding-left: 14px;
+  padding-left: 16px;
   margin-bottom: 35px;
 }
 
@@ -281,43 +313,64 @@ p, li, span, a {
   color: #111;
 }
 
-/* =========================================================================
-   FINAL CTA
-   ========================================================================= */
+/* -----------------------------
+   11. FINAL CTA
+----------------------------- */
 
 .final-cta {
   text-align: center;
   padding: 110px 5%;
+  color: #ffffff;
 }
 
 .final-cta h2 {
   font-size: 2.4rem;
   margin-bottom: 25px;
+  color: #ffffff;
 }
 
 .final-cta p {
   font-size: 1.2rem;
-  color: #e7e9ea;
   margin-bottom: 25px;
 }
 
+/* -----------------------------
+   12. FOOTER
+----------------------------- */
+
+.site-footer {
+  background: #0a0c0e;
+  padding: 60px 5%;
+  color: #e7e9ea;
+}
+
+.site-footer a {
+  color: #f4bf4f;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  gap: 30px;
+}
+
 /* =========================================================================
-   ANIMATIONS
-   ========================================================================= */
+   13. ANIMATIONS (VERY SUBTLE)
+========================================================================= */
 
 @keyframes fadeUp {
-  0% { opacity: 0; transform: translateY(22px); }
+  0% { opacity: 0; transform: translateY(16px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 
 .fade-up {
   opacity: 0;
-  animation: fadeUp 1s ease-out forwards;
+  animation: fadeUp 1.1s ease-out forwards;
 }
 
 /* =========================================================================
-   RESPONSIVE BREAKPOINTS
-   ========================================================================= */
+   14. RESPONSIVE BREAKPOINTS
+========================================================================= */
 
 @media (max-width: 900px) {
   .he-hero-content h1 {
@@ -326,17 +379,25 @@ p, li, span, a {
 }
 
 @media (max-width: 768px) {
+
   .he-hero {
     background-position: center top;
     min-height: 70vh;
+    text-align:center;
   }
 
   .he-hero-content {
-    text-align: center;
+    max-width: 90%;
+    margin: auto;
   }
 
   .group-item {
     grid-template-columns: 55px 1fr;
+  }
+
+  .white-block,
+  .section {
+    padding: 60px 5%;
   }
 }
 
@@ -344,34 +405,4 @@ p, li, span, a {
   .he-hero-content h1 {
     font-size: 2rem;
   }
-}
-/* =========================================================================
-   WHITE BLOCK READABILITY RESTORE (fix washed-out text)
-   ========================================================================= */
-
-.white-block,
-.white-block * {
-  color: #111 !important;           /* restore dark text */
-  opacity: 1 !important;            /* ensure strong visibility */
-}
-
-/* Headings inside white sections */
-.white-block h1,
-.white-block h2,
-.white-block h3,
-.white-block h4 {
-  color: #000 !important;
-  font-weight: 700;
-}
-
-/* Paragraphs and lists inside white sections */
-.white-block p,
-.white-block li {
-  color: #333 !important;
-}
-
-/* Cards inside white sections */
-.white-block .card,
-.white-block .card * {
-  color: #111 !important;
 }
