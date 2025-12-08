@@ -17,6 +17,14 @@ html, body {
   scroll-behavior: smooth;
 }
 
+/* 1) Ensure padding/percentage-based widths don't cause horizontal overflow */
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 /* Standard typography */
 h1, h2, h3, h4, h5 {
   font-weight: 700;
@@ -243,8 +251,8 @@ a:hover {
 .hero-align-right .he-hero-content {
   margin-left: auto;            /* push content to the right */
   text-align: right;            /* right-align text */
-  margin-right: 5%;             /* keep content away from edge */
-  max-width: 520px;             /* shorten line length for readability */
+  margin-right: 7%;             /* increased from 5% so text has breathing room */
+  max-width: 480px;             /* reduced from 520px to avoid touching the edge */
 }
 
 .hero-align-right .he-hero-content h1,
@@ -482,6 +490,7 @@ a:hover {
     font-size: 2rem;
   }
 }
+
 /* =========================================================================
    ABOUT PAGE HERO ADJUSTMENTS
    ========================================================================= */
@@ -514,6 +523,7 @@ a:hover {
 .about-hero .he-hero-content p {
   font-size: 1.15rem;
 }
+
 /* ===============================================================
    Adjust hero image positioning across all pages (except membership)
    Ensures the photo shows both Michael and Jack and text doesn't 
@@ -521,21 +531,11 @@ a:hover {
    =============================================================== */
 
 .adjusted-hero {
-  background-position: center 20%; /* shift image down on desktop */
+  background-position: center 70%; /* shift focal point down so the dog is visible */
 }
 
 @media (max-width: 768px) {
   .adjusted-hero {
-    background-position: center 30%; /* further down on mobile */
+    background-position: center 85%; /* prioritize bottom subject on phones */
   }
 }
-/* Adjust hero image placement on pages other than Membership */
-.adjusted-hero {
-  background-position: center 20%; /* shift down on desktop */
-}
-@media (max-width: 768px) {
-  .adjusted-hero {
-    background-position: center 30%; /* further down on mobile */
-  }
-}
-<section class="he-hero adjusted-hero hero-align-right soft-right" ...>
