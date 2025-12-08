@@ -345,3 +345,33 @@ p, li, span, a {
     font-size: 2rem;
   }
 }
+/* =========================================================================
+   WHITE BLOCK READABILITY RESTORE (fix washed-out text)
+   ========================================================================= */
+
+.white-block,
+.white-block * {
+  color: #111 !important;           /* restore dark text */
+  opacity: 1 !important;            /* ensure strong visibility */
+}
+
+/* Headings inside white sections */
+.white-block h1,
+.white-block h2,
+.white-block h3,
+.white-block h4 {
+  color: #000 !important;
+  font-weight: 700;
+}
+
+/* Paragraphs and lists inside white sections */
+.white-block p,
+.white-block li {
+  color: #333 !important;
+}
+
+/* Cards inside white sections */
+.white-block .card,
+.white-block .card * {
+  color: #111 !important;
+}
