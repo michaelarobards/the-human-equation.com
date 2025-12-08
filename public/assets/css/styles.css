@@ -244,7 +244,7 @@ a:hover {
   margin-left: auto;            /* push content to the right */
   text-align: right;            /* right-align text */
   margin-right: 5%;             /* keep content away from edge */
-  max-width: 620px;             /* readable width */
+  max-width: 520px;             /* shorten line length for readability */
 }
 
 .hero-align-right .he-hero-content h1,
@@ -274,6 +274,44 @@ a:hover {
       rgba(0,0,0,0.45) 60%,
       rgba(0,0,0,0.25) 100%
     );
+  }
+}
+
+/* Mobile hero improvements: better image cropping, stronger overlay,
+   reduced typography, and adjusted spacing so the banner reads well on phones */
+@media (max-width: 768px) {
+  .adjusted-hero {
+    background-position: center 55% !important; /* shift focal point down for mobile */
+    min-height: 60vh;                             /* taller hero on small screens */
+    padding: 40px 5%;                             /* slightly tighter vertical padding */
+  }
+
+  .he-hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.85) 10%,
+      rgba(0,0,0,0.55) 50%,
+      rgba(0,0,0,0.25) 100%
+    );
+  }
+
+  .he-hero-content h1 {
+    font-size: 1.75rem; /* reduce headline size on mobile */
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+
+  .he-hero-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .he-hero-content h1 {
+    font-size: 1.4rem;
+  }
+  .he-hero-content p {
+    font-size: 0.95rem;
   }
 }
 
