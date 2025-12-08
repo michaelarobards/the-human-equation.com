@@ -1,158 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Groups — The Human Equation</title>
-
-  <link rel="stylesheet" href="/assets/css/styles.css" />
-
-  <meta name="description" content="Weekly therapist-led support and identity-growth groups at The Human Equation." />
-
-  <style>
-    .scroll-btn { cursor:pointer; }
-    .widget-container {
-      margin-top:40px;
-      padding:30px;
-      background:#ffffff;
-      border:1px solid #ddd;
-    }
-    .widget-container h2 {
-      margin-bottom:10px;
-      color:#000 !important;
-    }
-    .widget-container p { color:#333 !important; }
-  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parenting Teens Test Widget</title>
+<link rel="stylesheet" href="/assets/css/styles.css" />
 </head>
-
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="site-header">
-  <div class="nav-container">
-    <a class="logo" href="/">THE HUMAN EQUATION</a>
-    <nav class="main-nav">
-      <a href="/groups.html" class="active">Groups</a>
-      <a href="/membership.html">Membership</a>
-      <a href="/insight.html">Insight Series</a>
-      <a href="/about.html">About</a>
-      <a href="/blog.html">Blog</a>
-      <a href="/contact.html">Contact</a>
-      <a class="cta" href="/membership.html">Join</a>
-    </nav>
-  </div>
-</header>
+<h1 style="padding:20px; color:#fff;">Parenting Teens Widget Test</h1>
 
-<!-- ================= HERO ================= -->
-<section class="he-hero adjusted-hero hero-align-right">
-  <div class="hero-frame" style="background-image:url('/images/jack-mike-hero.jpg');"></div>
-  <div class="he-hero-overlay"></div>
-  <div class="he-hero-content">
-    <h1>Weekly Groups</h1>
-    <p>Where identity grows, relationships heal, and community makes everything possible.</p>
-  </div>
-</section>
-
-
-<!-- ================= GROUP CARDS SAMPLE ================= -->
-<section class="white-block fade-up">
+<section class="white-block">
   <div class="container">
-    <h2>Parenting Groups</h2>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; margin-top:40px;">
-
-      <!-- Parenting Teens (only live group in this sample) -->
-      <div class="card">
-        <h3>Parenting Teens</h3>
-        <p><strong>Tuesday • 3:00 PM EST</strong></p>
-        <p>Boundaries, communication, identity development — this group helps parents stay connected during rapid adolescent change.</p>
-        <button class="cta-primary scroll-btn" data-target="parenting-teens-widget">
-          Join This Group
-        </button>
-      </div>
-
-      <!-- Everything else disabled for this sample test -->
-      <div class="card">
-        <h3>Parenting Autistic Kids & Teens</h3>
-        <p><strong>Monday • 3:00 PM EST</strong></p>
-        <p>Coming soon.</p>
-        <button class="cta-primary" disabled>Coming Soon</button>
-      </div>
-
-      <div class="card">
-        <h3>Parents of Trans & GNC Teens</h3>
-        <p><strong>Wednesday • 3:00 PM EST</strong></p>
-        <p>Coming soon.</p>
-        <button class="cta-primary" disabled>Coming Soon</button>
-      </div>
-
-      <div class="card">
-        <h3>Parents Grief Group</h3>
-        <p><strong>Thursday • 3:00 PM EST</strong></p>
-        <p>Coming soon.</p>
-        <button class="cta-primary" disabled>Coming Soon</button>
-      </div>
-
-      <div class="card">
-        <h3>Survivors of Suicide (Parents)</h3>
-        <p><strong>Friday • 3:00 PM EST</strong></p>
-        <p>Coming soon.</p>
-        <button class="cta-primary" disabled>Coming Soon</button>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ================= PARENTING TEENS WIDGET ================= -->
-<section id="parenting-teens-widget" class="white-block fade-up">
-  <div class="container widget-container">
-
     <h2>Parenting Teens — Schedule</h2>
-    <p>Your first week is free. Choose any session below to register.</p>
+    <p>Select a date below to register.</p>
 
-    <!-- Start Square Appointments Embed Code -->
+    <!-- EXACT SCRIPT YOU PROVIDED -->
     <script src="https://app.squareup.com/appointments/buyer/widget/wdxpdv9rg8ymyo/LPQCJMZ045EAK.js"></script>
-    <!-- End Square Appointments Embed Code -->
-
   </div>
 </section>
-
-
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div><h4>The Human Equation</h4></div>
-    <div>
-      <ul>
-        <li><a href="/groups.html">Groups</a></li>
-        <li><a href="/membership.html">Membership</a></li>
-        <li><a href="/insight.html">Insight Series</a></li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li><a href="/about.html">About Michael</a></li>
-        <li><a href="/blog.html">Blog</a></li>
-        <li><a href="/contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <p class="copyright">© 2025 The Human Equation. All rights reserved.</p>
-</footer>
-
-<!-- ================= SCROLL SCRIPT ================= -->
-<script>
-document.querySelectorAll(".scroll-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const target = btn.dataset.target;
-    if (!target) return;
-    document.getElementById(target).scrollIntoView({ behavior:"smooth" });
-  });
-});
-</script>
 
 </body>
 </html>
