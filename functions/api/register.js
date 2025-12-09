@@ -113,24 +113,63 @@ const bookingRes = await fetch(
 
 const bookingData = await bookingRes.json();
 
+// If Square returned errors
+if (bookingData.errors && bookingData.errors.length > 0) {
+  return json(
+    { success: false, error: bookingData.errors },
+    500
+  );
+}
+
+// Success!
+return json({
+  success: true,
+  message: "Booking confirmed",
+  booking: bookingData.booking,
+});
+
+  } catch (err) {
+    return json(
+      { success: false, error: err.toString() },
+      500
+    );
+  }
+}
+
+// ---------------------
+// Helper functions
+// ---------------------
+
+function squareHeaders(token) {
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+    "Square-Version": "2023-12-13",
+  };
+}
+
+function json(obj, status = 200) {
+  return new Response(JSON.stringify(obj), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+}
 
 /**
  * Compute next weekly recurring session time for a given variation_id.
- * NOTE: Replace schedule map with real data from Claude's JSON.
  */
 function computeNextSession(variation_id) {
   const schedule = {
-    // Variation → { dayIndex: 1–6, time: "15:00" }
-    DDBSAMHIEGVV57JAG7I4D3IV: { day: 1, time: "15:00" }, // Parenting Autistic Kids
-    ISXKIIC4F4ISR67PP4YQ6PBZ: { day: 2, time: "15:00" }, // Parenting Teens
-    I6L5QQ6KT5FL245W542SX4HX: { day: 3, time: "15:00" }, // Parents of Trans
-    KFTRZLGAILOA4IXZCZR26B62: { day: 4, time: "15:00" }, // Grief Group
-    CUOERZXZ4AT7LYIJCP2HYC2W: { day: 5, time: "15:00" }, // Suicide survivors
-    ENO736PHXSMLRMCK6VEI7C2H: { day: 6, time: "14:00" }, // Fatherhood
-    M5HDIVID6XWIFSC5PPEEEGUW: { day: 6, time: "15:00" }, // Motherhood
-    FRY5CM4YE5GNYLWOSB4WYALC: { day: 6, time: "16:00" }, // Live stream
-    "4H5YY6NEJKWO3Z3NFLKLA7KE": { day: 6, time: "13:00" }, // Insight Series
-    AQESH2V7RLSLIACONOSEK6IG: { day: 4, time: "20:00" }, // Men in 20s
+    DDBSAMHIEGVV57JAG7I4D3IV: { day: 1, time: "15:00" },
+    ISXKIIC4F4ISR67PP4YQ6PBZ: { day: 2, time: "15:00" },
+    I6L5QQ6KT5FL245W542SX4HX: { day: 3, time: "15:00" },
+    KFTRZLGAILOA4IXZCZR26B62: { day: 4, time: "15:00" },
+    CUOERZXZ4AT7LYIJCP2HYC2W: { day: 5, time: "15:00" },
+    ENO736PHXSMLRMCK6VEI7C2H: { day: 6, time: "14:00" },
+    M5HDIVID6XWIFSC5PPEEEGUW: { day: 6, time: "15:00" },
+    FRY5CM4YE5GNYLWOSB4WYALC: { day: 6, time: "16:00" },
+    "4H5YY6NEJKWO3Z3NFLKLA7KE": { day: 6, time: "13:00" },
+    AQESH2V7RLSLIACONOSEK6IG: { day: 4, time: "20:00" },
   };
 
   const item = schedule[variation_id];
@@ -139,8 +178,8 @@ function computeNextSession(variation_id) {
   const now = new Date();
   let target = new Date(now);
 
-  const currentDay = now.getDay(); // Sun=0
-  const neededDay = item.day; // Mon=1
+  const currentDay = now.getDay();
+  const neededDay = item.day;
 
   let diff = neededDay - currentDay;
   if (diff <= 0) diff += 7;
