@@ -390,6 +390,23 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
     alert("Error: " + (data.error || "Unable to book."));
   }
 });
+
+
+  const res = await fetch("/api/register", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(payload)
+  });
+
+  const data = await res.json();
+
+  if (data.success) {
+    document.getElementById("successBanner").style.display = "block";
+    document.getElementById("registerForm").reset();
+  } else {
+    alert("Error: " + (data.error || "Unable to book."));
+  }
+});
 </script>
 
 
