@@ -74,80 +74,45 @@ export async function onRequestPost(context) {
     }
 
     // -----------------------------
-    // 3. CREATE BOOKING
-    // -----------------------------
-    // Compute next available session: (we already have fixed weekly schedule)
-    // We compute next session automatically for the variation.
-    const startAt = computeNextSession(variation_id);
-
-    if (!startAt) {
-      return json({
-        success: false,
-        error: "Could not compute next session time.",
-      });
-    }
-
-    const bookingRes = await fetch(
-      "https://connect.squareup.com/v2/bookings",
-      {
-        method: "POST",
-        headers: squareHeaders(SQUARE_TOKEN),
-        body: JSON.stringify({
-          booking: {
-            start_at: startAt,
-            location_id: LOCATION_ID,
-            customer_id: customerId,
-            customer_note: notes || "",
-            appointment_segments: [
-              {
-                team_member_id: TEAM_MEMBER_ID,
-                service_variation_id: variation_id,
-                service_variation_version: Number(variation_version),
-                duration_minutes: 55,
-              },
-            ],
-          },
-        }),
-      }
-    );
-
-    const bookingData = await bookingRes.json();
-
-    if (bookingData.errors) {
-      return json(
-        { success: false, error: bookingData.errors },
-        500
-      );
-    }
-
-    return json({
-      success: true,
-      message: "Booking confirmed",
-      booking: bookingData.booking,
-    });
-
-  } catch (err) {
-    return json(
-      { success: false, error: err.toString() },
-      500
-    );
-  }
-}
-
-function squareHeaders(token) {
-  return {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-    "Square-Version": "2023-12-13",
-  };
-}
-
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), {
-    status,
-    headers: { "Content-Type": "application/json" },
+// 3. CREATE BOOKING
+// -----------------------------
+const startAt = computeNextSession(variation_id);
+if (!startAt) {
+  return json({
+    success: false,
+    error: "Could not compute next session time.",
   });
 }
+
+const idempotencyKey = crypto.randomUUID();   // ⭐ NEW REQUIRED FIELD ⭐
+
+const bookingRes = await fetch(
+  "https://connect.squareup.com/v2/bookings",
+  {
+    method: "POST",
+    headers: squareHeaders(SQUARE_TOKEN),
+    body: JSON.stringify({
+      idempotency_key: idempotencyKey,
+      booking: {
+        start_at: startAt,
+        location_id: LOCATION_ID,
+        customer_id: customerId,
+        customer_note: notes || "",
+        appointment_segments: [
+          {
+            team_member_id: TEAM_MEMBER_ID,
+            service_variation_id: variation_id,
+            service_variation_version: Number(variation_version),
+            duration_minutes: 55,
+          },
+        ],
+      }
+    }),
+  }
+);
+
+const bookingData = await bookingRes.json();
+
 
 /**
  * Compute next weekly recurring session time for a given variation_id.
