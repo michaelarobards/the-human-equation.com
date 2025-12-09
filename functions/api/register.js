@@ -1,9 +1,23 @@
+// Handle GET requests to /api/register (browser tests)
+export const onRequestGet = () => {
+  return new Response(
+    JSON.stringify({
+      ok: true,
+      message: "The Human Equation booking API is live. Use POST to register."
+    }),
+    {
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    }
+  );
+};
+
+
+// Handle POST requests (actual booking logic)
 export const onRequestPost = async (context) => {
   try {
     const req = context.request;
     const env = context.env;
-    const body = await req.json();
-
     const {
       name,
       email,
@@ -12,20 +26,20 @@ export const onRequestPost = async (context) => {
       duration,
       day,
       time
-    } = body;
+    } = await req.json();
 
+    // Basic validation
     if (!name || !email || !variation_id || !day || !time) {
-      return json({ error: true, message: "Missing fields." }, 400);
+      return json({ error: true, message: "Missing required fields." }, 400);
     }
 
+    // Compute next session datetime
     const startAt = computeNextSessionISO(day, time);
 
+    // Claude MCP booking payload
     const bookingPayload = {
       task: "create_square_booking",
-      customer: {
-        email,
-        name
-      },
+      customer: { email, name },
       booking: {
         location_id: "LPQCJMZ045EAK",
         start_at: startAt,
@@ -36,63 +50,59 @@ export const onRequestPost = async (context) => {
       }
     };
 
-    const aiResponse = await env.CLAUDE.run(
-      "square.createBooking",
-      bookingPayload
-    );
+    const result = await env.CLAUDE.run("square.createBooking", bookingPayload);
 
-    if (aiResponse?.error) {
-      return json(
-        {
-          error: true,
-          message: "Unable to create booking.",
-          details: aiResponse.error,
-        },
-        500
-      );
+    if (result?.error) {
+      return json({
+        error: true,
+        message: "Booking failed.",
+        details: result.error
+      }, 500);
     }
 
     return json({
       success: true,
-      message: "You're registered! Check email for confirmation.",
-      start_at: startAt,
-      booking: aiResponse,
+      message: "You are registered! Check your email for confirmation.",
+      booking: result
     });
+
   } catch (err) {
-    return json({ error: true, message: "Internal error." }, 500);
+    return json({ error: true, message: "Server error." }, 500);
   }
 };
+
+
+// ------- Helpers ---------
 
 function json(obj, status = 200) {
   return new Response(JSON.stringify(obj), {
     status,
     headers: {
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
+      "Access-Control-Allow-Origin": "*"
+    }
   });
 }
 
+
 function computeNextSessionISO(weekdayName, timeString) {
-  const weekdayMap = {
+  const days = {
     Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3,
     Thursday: 4, Friday: 5, Saturday: 6
   };
 
-  const targetDow = weekdayMap[weekdayName];
+  const target = days[weekdayName];
   const now = new Date();
-  const todayDow = now.getDay();
+  const today = now.getDay();
 
-  let delta = targetDow - todayDow;
+  let delta = target - today;
   if (delta < 0) delta += 7;
 
   const date = new Date(now);
   date.setDate(now.getDate() + delta);
 
-  const [hr, min] = timeString.split(":").map(Number);
-  date.setHours(hr);
-  date.setMinutes(min);
-  date.setSeconds(0);
+  const [hours, minutes] = timeString.split(":").map(Number);
+  date.setHours(hours, minutes, 0, 0);
 
   return date.toISOString();
 }
