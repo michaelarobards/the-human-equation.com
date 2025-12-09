@@ -1,436 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Groups — The Human Equation</title>
-
+  <title>Weekly Groups — The Human Equation</title>
   <link rel="stylesheet" href="/assets/css/styles.css" />
-
   <style>
-    /* Page structure fixes */
-    body {
-      background: #f7f7f7;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
+    /* Additional page-specific polish */
+    .he-hero {
+      position: relative;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
     }
-
-    section.white-block {
-      background: #fff;
-      padding: 40px 0;
-      margin-bottom: 20px;
+    .hero-frame {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
     }
-
-    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: auto;
+    .he-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 2;
     }
-
-    /* GROUP CARDS */
-    .group-card {
+    .he-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .white-block {
       background: #ffffff;
-      border-radius: 10px;
-      padding: 22px;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+      padding: 40px 0;
     }
-
+    .group-card {
+      background: #fff;
+      padding: 24px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      margin-bottom: 20px;
+    }
     .group-card h3 {
       margin-top: 0;
       color: #111;
     }
-
-    .group-card p {
-      color: #444;
-      font-size: 15px;
-      line-height: 1.5;
-    }
-
-    .cta-primary {
-      display: inline-block;
-      background: #f4bf4f;
-      color: #111;
-      padding: 10px 18px;
-      border-radius: 6px;
-      margin-top: 10px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
-    }
-
-    /* WEEKLY SCHEDULE SECTION */
-    .schedule-day {
-      margin-bottom: 35px;
-    }
-
-    .schedule-day h3 {
-      font-size: 20px;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
     .schedule-row {
       background: #fff;
-      padding: 18px;
-      border-radius: 8px;
+      padding: 16px;
       margin-bottom: 12px;
-      box-shadow: 0px 2px 5px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
-    .schedule-row strong {
-      font-size: 16px;
+    .cta-primary {
+      background: #f4bf4f;
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
       color: #111;
     }
-
-    /* MODAL STYLING */
+    /* Modal */
     .modal {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.65);
+      inset: 0;
+      background: rgba(0,0,0,0.6);
       display: none;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       z-index: 500;
     }
-
     .modal-content {
       background: #fff;
-      padding: 30px;
+      padding: 28px;
       border-radius: 10px;
       width: 90%;
-      max-width: 450px;
+      max-width: 420px;
       position: relative;
-      animation: fadeIn 0.22s ease-out;
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.97);}
-      to   {opacity: 1; transform: scale(1);}
-    }
-
     .close {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      font-size: 28px;
+      top: 10px;
+      right: 14px;
       cursor: pointer;
+      font-size: 26px;
     }
-
-    .modal-content label {
-      font-weight: 500;
-      margin-top: 15px;
-      display: block;
-    }
-
-    .modal-content input,
-    .modal-content textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 4px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 15px;
-    }
-
-    .modal-content textarea {
-      height: 85px;
-      resize: vertical;
+    .success-banner {
+      background: #e6f8e0;
+      color: #145a32;
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-weight: 600;
     }
   </style>
-
 </head>
 
 <body>
 
-  <!-- HEADER (restored) -->
-  <header class="site-header">
-    <div class="nav-container">
-      <a class="logo" href="/">THE HUMAN EQUATION</a>
-      <nav class="main-nav">
-        <a href="/groups.html" class="active">Groups</a>
-        <a href="/membership.html">Membership</a>
-        <a href="/insight.html">Insight Series</a>
-        <a href="/about.html">About</a>
-        <a href="/blog.html">Blog</a>
-        <a href="/contact.html">Contact</a>
-        <a class="cta" href="/membership.html">Join</a>
-      </nav>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="nav-container">
+    <a class="logo" href="/">THE HUMAN EQUATION</a>
+    <nav class="main-nav">
+      <a href="/groups.html" class="active">Groups</a>
+      <a href="/membership.html">Membership</a>
+      <a href="/insight.html">Insight Series</a>
+      <a href="/about.html">About</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/contact.html">Contact</a>
+      <a class="cta" href="/membership.html">Join</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="he-hero">
+  <div class="hero-frame" style="background-image:url('/images/jack-mike-hero.jpg');"></div>
+  <div class="he-hero-overlay"></div>
+  <div class="he-hero-content">
+    <h1>Weekly Groups</h1>
+    <p>Where identity grows, relationships heal, and community makes everything possible.</p>
+  </div>
+</section>
+
+
+<!-- ABOUT THESE GROUPS -->
+<section class="white-block">
+  <div class="container">
+    <h2>About These Groups</h2>
+
+    <div class="group-card">
+      <h3>Parenting Autistic Kids & Teens</h3>
+      <p>Support, clarity, and community for parents navigating neurodivergence with compassion and confidence.</p>
+      <a href="#schedule" class="cta-primary">View Schedule</a>
     </div>
-  </header>
 
-  <!-- HERO (restored) -->
-  <section class="he-hero adjusted-hero hero-align-right" style="min-height: 360px;">
-    <div class="hero-frame" style="background-image:url('/images/jack-mike-hero.jpg');"></div>
-    <div class="he-hero-overlay"></div>
-
-    <div class="he-hero-content">
-      <h1>Weekly Groups</h1>
-      <p>Where identity grows, relationships heal, and community makes everything possible.</p>
+    <div class="group-card">
+      <h3>Parenting Teens</h3>
+      <p>Boundaries, communication, identity development — a group for staying connected when everything is changing.</p>
+      <a href="#schedule" class="cta-primary">View Schedule</a>
     </div>
-  </section>
 
-  <!-- GROUP CARDS (restored descriptions) -->
-  <section class="white-block">
-    <div class="container">
-      <h2>About These Groups</h2>
-
-      <div class="group-card">
-        <h3>Parenting Autistic Kids & Teens</h3>
-        <p>Support, clarity, and community for parents navigating neurodivergence with compassion and confidence.</p>
-        <a href="#schedule" class="cta-primary">View Schedule</a>
-      </div>
-
-      <div class="group-card">
-        <h3>Parenting Teens</h3>
-        <p>Boundaries, communication, identity development — a group for staying connected when everything is changing.</p>
-        <a href="#schedule" class="cta-primary">View Schedule</a>
-      </div>
-
-      <div class="group-card">
-        <h3>Parents of Trans & Gender Nonconforming Teens</h3>
-        <p>An affirming, stable space for navigating your teen’s gender journey with therapeutic support.</p>
-        <a href="#schedule" class="cta-primary">View Schedule</a>
-      </div>
-
-      <div class="group-card">
-        <h3>The Insight Series</h3>
-        <p>Identity reconstruction through narrative therapy, personality systems, and emotional integration.</p>
-        <a href="#schedule" class="cta-primary">View Schedule</a>
-      </div>
+    <div class="group-card">
+      <h3>Parents of Trans & Gender Nonconforming Teens</h3>
+      <p>An affirming, stable space for navigating your teen’s gender journey with therapeutic support.</p>
+      <a href="#schedule" class="cta-primary">View Schedule</a>
     </div>
-  </section>
 
-  <!-- WEEKLY SCHEDULE (clean, polished) -->
-  <section id="schedule" class="white-block fade-up">
-    <div class="container">
-
-      <h2>Weekly Schedule</h2>
-      <p>Your first week is free. Register below and your booking will be confirmed automatically.</p>
-
-      <!-- Monday -->
-      <div class="schedule-day">
-        <h3>Monday</h3>
-        <div class="schedule-row">
-          <strong>3:00 PM — Parenting Autistic Kids & Teens</strong>
-          <button class="cta-primary register-btn"
-            data-group="Parenting Autistic Kids & Teens"
-            data-var-id="DDBSAMHIEGVV57JAG7I4D3IV"
-            data-duration="55"
-            data-day="Monday"
-            data-time="15:00">Register Free</button>
-        </div>
-      </div>
-
-      <!-- Tuesday -->
-      <div class="schedule-day">
-        <h3>Tuesday</h3>
-        <div class="schedule-row">
-          <strong>3:00 PM — Parenting Teens</strong>
-          <button class="cta-primary register-btn"
-            data-group="Parenting Teens"
-            data-var-id="ISXKIIC4F4ISR67PP4YQ6PBZ"
-            data-duration="55"
-            data-day="Tuesday"
-            data-time="15:00">Register Free</button>
-        </div>
-      </div>
-
-      <!-- Wednesday -->
-      <div class="schedule-day">
-        <h3>Wednesday</h3>
-        <div class="schedule-row">
-          <strong>3:00 PM — Parents of Trans & GNC Teens</strong>
-          <button class="cta-primary register-btn"
-            data-group="Parents of Trans & GNC Teens"
-            data-var-id="I6L5QQ6KT5FL245W542SX4HX"
-            data-duration="55"
-            data-day="Wednesday"
-            data-time="15:00">Register Free</button>
-        </div>
-      </div>
-
-      <!-- Thursday -->
-      <div class="schedule-day">
-        <h3>Thursday</h3>
-        <div class="schedule-row">
-          <strong>3:00 PM — Parents Grief Group</strong>
-          <button class="cta-primary register-btn"
-            data-group="Parents Grief Group"
-            data-var-id="KFTRZLGAILOA4IXZCZR26B62"
-            data-duration="55"
-            data-day="Thursday"
-            data-time="15:00">Register Free</button>
-        </div>
-
-        <div class="schedule-row">
-          <strong>8:00 PM — Men in Their 20s</strong>
-          <button class="cta-primary register-btn"
-            data-group="Men in Their 20s"
-            data-var-id="AQESH2V7RLSLIACONOSEK6IG"
-            data-duration="60"
-            data-day="Thursday"
-            data-time="20:00">Register Free</button>
-        </div>
-      </div>
-
-      <!-- Friday -->
-      <div class="schedule-day">
-        <h3>Friday</h3>
-        <div class="schedule-row">
-          <strong>3:00 PM — Survivors of Suicide (Parents)</strong>
-          <button class="cta-primary register-btn"
-            data-group="Survivors of Suicide"
-            data-var-id="CUOERZXZ4AT7LYIJCP2HYC2W"
-            data-duration="55"
-            data-day="Friday"
-            data-time="15:00">Register Free</button>
-        </div>
-      </div>
-
-      <!-- Saturday -->
-      <div class="schedule-day">
-        <h3>Saturday</h3>
-
-        <div class="schedule-row">
-          <strong>1:00 PM — The Insight Series</strong>
-          <button class="cta-primary register-btn"
-            data-group="The Insight Series"
-            data-var-id="4H5YY6NEJKWO3Z3NFLKLA7KE"
-            data-duration="60"
-            data-day="Saturday"
-            data-time="13:00">Register Free</button>
-        </div>
-
-        <div class="schedule-row">
-          <strong>2:00 PM — Modern Fatherhood</strong>
-          <button class="cta-primary register-btn"
-            data-group="Modern Fatherhood"
-            data-var-id="ENO736PHXSMLRMCK6VEI7C2H"
-            data-duration="60"
-            data-day="Saturday"
-            data-time="14:00">Register Free</button>
-        </div>
-
-        <div class="schedule-row">
-          <strong>3:00 PM — Modern Motherhood</strong>
-          <button class="cta-primary register-btn"
-            data-group="Modern Motherhood"
-            data-var-id="M5HDIVID6XWIFSC5PPEEEGUW"
-            data-duration="60"
-            data-day="Saturday"
-            data-time="15:00">Register Free</button>
-        </div>
-
-        <div class="schedule-row">
-          <strong>4:00 PM — Saturday Live Stream</strong>
-          <button class="cta-primary register-btn"
-            data-group="Saturday Livestream"
-            data-var-id="FRY5CM4YE5GNYLWOSB4WYALC"
-            data-duration="60"
-            data-day="Saturday"
-            data-time="16:00">Register Free</button>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- MODAL (restored brand styling) -->
-  <div id="registerModal" class="modal">
-    <div class="modal-content">
-      <span id="closeModal" class="close">&times;</span>
-      <h3 id="modalGroupName">Register</h3>
-
-      <form id="registerForm">
-        <input type="hidden" id="varIdField">
-        <input type="hidden" id="durationField">
-        <input type="hidden" id="dayField">
-        <input type="hidden" id="timeField">
-
-        <label>Name</label>
-        <input type="text" id="nameField" required>
-
-        <label>Email</label>
-        <input type="email" id="emailField" required>
-
-        <label>What brings you here?</label>
-        <textarea id="contextField"></textarea>
-
-        <button type="submit" class="cta-primary" style="width:100%;margin-top:15px;">
-          Reserve My Spot
-        </button>
-      </form>
+    <div class="group-card">
+      <h3>The Insight Series</h3>
+      <p>Identity reconstruction through narrative therapy, personality systems, and emotional integration.</p>
+      <a href="#schedule" class="cta-primary">View Schedule</a>
     </div>
   </div>
+</section>
 
-  <!-- JS (modal + booking payload) -->
-  <script>
-    // Open modal
-    document.querySelectorAll(".register-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.getElementById("modalGroupName").innerText = btn.dataset.group;
 
-        document.getElementById("varIdField").value = btn.dataset.varId;
-        document.getElementById("durationField").value = btn.dataset.duration;
-        document.getElementById("dayField").value = btn.dataset.day;
-        document.getElementById("timeField").value = btn.dataset.time;
+<!-- WEEKLY SCHEDULE -->
+<section id="schedule" class="white-block">
+  <div class="container">
+    <h2>Weekly Schedule</h2>
+    <p>Your first week is free. Register below and your booking will be confirmed automatically.</p>
 
-        document.getElementById("registerModal").style.display = "flex";
-      });
-    });
 
-    // Close modal
-    document.getElementById("closeModal").onclick =
-      () => document.getElementById("registerModal").style.display = "none";
+    <!-- Monday -->
+    <h3>Monday</h3>
+    <div class="schedule-row">
+      <strong>3:00 PM — Parenting Autistic Kids & Teens</strong>
+      <button class="cta-primary register-btn"
+        data-group="Parenting Autistic Kids & Teens"
+        data-var-id="DDBSAMHIEGVV57JAG7I4D3IV"
+        data-version="4"
+        data-duration="55"
+        data-day="Monday"
+        data-time="15:00">Register Free</button>
+    </div>
 
-    // Close if clicking outside
-    window.onclick = (e) => {
-      if (e.target == document.getElementById("registerModal")) {
-        document.getElementById("registerModal").style.display = "none";
-      }
-    };
+    <!-- Tuesday -->
+    <h3>Tuesday</h3>
+    <div class="schedule-row">
+      <strong>3:00 PM — Parenting Teens</strong>
+      <button class="cta-primary register-btn"
+        data-group="Parenting Teens"
+        data-var-id="ISXKIIC4F4ISR67PP4YQ6PBZ"
+        data-version="7"
+        data-duration="55"
+        data-day="Tuesday"
+        data-time="15:00">Register Free</button>
+    </div>
 
-    // Submit form
-    document.getElementById("registerForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
+    <!-- Wednesday -->
+    <h3>Wednesday</h3>
+    <div class="schedule-row">
+      <strong>3:00 PM — Parents of Trans & GNC Teens</strong>
+      <button class="cta-primary register-btn"
+        data-group="Parents of Trans & GNC Teens"
+        data-var-id="I6L5QQ6KT5FL245W542SX4HX"
+        data-version="1"
+        data-duration="55"
+        data-day="Wednesday"
+        data-time="15:00">Register Free</button>
+    </div>
 
-      const payload = {
-        name: document.getElementById("nameField").value,
-        email: document.getElementById("emailField").value,
-        context: document.getElementById("contextField").value,
-        variation_id: document.getElementById("varIdField").value,
-        duration: document.getElementById("durationField").value,
-        day: document.getElementById("dayField").value,
-        time: document.getElementById("timeField").value
-      };
+    <!-- Thursday -->
+    <h3>Thursday</h3>
+    <div class="schedule-row">
+      <strong>3:00 PM — Parents Grief Group</strong>
+      <button class="cta-primary register-btn"
+        data-group="Parents Grief Group"
+        data-var-id="KFTRZLGAILOA4IXZCZR26B62"
+        data-version="5"
+        data-duration="55"
+        data-day="Thursday"
+        data-time="15:00">Register Free</button>
+    </div>
 
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(payload)
-      });
+    <div class="schedule-row">
+      <strong>8:00 PM — Men in Their 20s</strong>
+      <button class="cta-primary register-btn"
+        data-group="Men in Their 20s"
+        data-var-id="AQESH2V7RLSLIACONOSEK6IG"
+        data-version="4"
+        data-duration="60"
+        data-day="Thursday"
+        data-time="20:00">Register Free</button>
+    </div>
 
-      const data = await res.json();
-      alert(data.message || "You're registered! Check your email for confirmation.");
-      document.getElementById("registerModal").style.display = "none";
-    });
-  </script>
+    <!-- Friday -->
+    <h3>Friday</h3>
+    <div class="schedule-row">
+      <strong>3:00 PM — Survivors of Suicide (Parents)</strong>
+      <button class="cta-primary register-btn"
+        data-group="Survivors of Suicide"
+        data-var-id="CUOERZXZ4AT7LYIJCP2HYC2W"
+        data-version="6"
+        data-duration="55"
+        data-day="Friday"
+        data-time="15:00">Register Free</button>
+    </div>
 
-  <!-- Footer -->
-  <footer>
-    © 2025 The Human Equation. All rights reserved.
-  </footer>
+    <!-- Saturday -->
+    <h3>Saturday</h3>
+
+    <div class="schedule-row">
+      <strong>1:00 PM — The Insight Series</strong>
+      <button class="cta-primary register-btn"
+        data-group="The Insight Series"
+        data-var-id="4H5YY6NEJKWO3Z3NFLKLA7KE"
+        data-version="3"
+        data-duration="60"
+        data-day="Saturday"
+        data-time="13:00">Register Free</button>
+    </div>
+
+    <div class="schedule-row">
+      <strong>2:00 PM — Modern Fatherhood</strong>
+      <button class="cta-primary register-btn"
+        data-group="Modern Fatherhood"
+        data-var-id="ENO736PHXSMLRMCK6VEI7C2H"
+        data-version="2"
+        data-duration="60"
+        data-day="Saturday"
+        data-time="14:00">Register Free</button>
+    </div>
+
+    <div class="schedule-row">
+      <strong>3:00 PM — Modern Motherhood</strong>
+      <button class="cta-primary register-btn"
+        data-group="Modern Motherhood"
+        data-var-id="M5HDIVID6XWIFSC5PPEEEGUW"
+        data-version="4"
+        data-duration="60"
+        data-day="Saturday"
+        data-time="15:00">Register Free</button>
+    </div>
+
+    <div class="schedule-row">
+      <strong>4:00 PM — Saturday Live Stream</strong>
+      <button class="cta-primary register-btn"
+        data-group="Saturday Live Stream"
+        data-var-id="FRY5CM4YE5GNYLWOSB4WYALC"
+        data-version="2"
+        data-duration="60"
+        data-day="Saturday"
+        data-time="16:00">Register Free</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- MODAL -->
+<div id="registerModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+
+    <h3 id="modalGroupName">Register</h3>
+
+    <form id="registerForm">
+
+      <input type="hidden" id="varIdField">
+      <input type="hidden" id="versionField">
+      <input type="hidden" id="durationField">
+      <input type="hidden" id="dayField">
+      <input type="hidden" id="timeField">
+
+      <label>Name</label>
+      <input type="text" id="nameField" required>
+
+      <label>Email</label>
+      <input type="email" id="emailField" required>
+
+      <label>What brings you here?</label>
+      <textarea id="contextField"></textarea>
+
+      <button class="cta-primary" type="submit" style="width:100%; margin-top:14px;">
+        Reserve My Spot
+      </button>
+
+    </form>
+
+    <div id="successBanner" class="success-banner" style="display:none;">
+      You're booked! Check your email for confirmation.
+    </div>
+
+  </div>
+</div>
+
+
+<!-- JS -->
+<script>
+document.querySelectorAll(".register-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.getElementById("modalGroupName").innerText = btn.dataset.group;
+
+    document.getElementById("varIdField").value = btn.dataset.varId;
+    document.getElementById("versionField").value = btn.dataset.version;
+    document.getElementById("durationField").value = btn.dataset.duration;
+    document.getElementById("dayField").value = btn.dataset.day;
+    document.getElementById("timeField").value = btn.dataset.time;
+
+    document.getElementById("successBanner").style.display = "none";
+
+    document.getElementById("registerModal").style.display = "flex";
+  });
+});
+
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("registerModal").style.display = "none";
+});
+
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const payload = {
+    name: document.getElementById("nameField").value,
+    email: document.getElementById("emailField").value,
+    context: document.getElementById("contextField").value,
+    variation_id: document.getElementById("varIdField").value,
+    variation_version: document.getElementById("versionField").value,
+    duration: document.getElementById("durationField").value,
+    day: document.getElementById("dayField").value,
+    time: document.getElementById("timeField").value
+  };
+
+  const res = await fetch("/api/register", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(payload)
+  });
+
+  const data = await res.json();
+
+  if (data.success) {
+    document.getElementById("successBanner").style.display = "block";
+    document.getElementById("registerForm").reset();
+  } else {
+    alert("Error: " + (data.error || "Unable to book."));
+  }
+});
+</script>
+
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>The Human Equation</h4>
+    </div>
+    <div>
+      <ul>
+        <li><a href="/groups.html">Groups</a></li>
+        <li><a href="/membership.html">Membership</a></li>
+        <li><a href="/insight.html">Insight Series</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <p style="text-align:center;">© 2025 The Human Equation. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
